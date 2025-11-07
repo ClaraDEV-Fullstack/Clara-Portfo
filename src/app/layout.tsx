@@ -51,7 +51,7 @@ export default function RootLayout({
         <main
             className="
         flex-1
-        pt-[7rem] sm:pt-[7rem] md:pt-[7rem]
+        pt-[6rem] sm:pt-[6rem] md:pt-[6em]
         w-full
         transition-all
     "
