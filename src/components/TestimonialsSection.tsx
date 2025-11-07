@@ -180,20 +180,6 @@ export default function TestimonialsPage() {
                 </p>
             </div>
 
-            {/* Add Testimonial Button */}
-            <div className="text-center mb-4 md:mb-8 relative z-10">
-                <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => {
-                        resetForm();
-                        setShowModal(true);
-                    }}
-                    className="px-3 py-1.5 md:px-4 md:py-2 bg-gradient-to-r from-blue-600 to-yellow-700 text-white font-semibold rounded-lg shadow-lg flex items-center justify-center mx-auto gap-1 md:gap-2 text-xs md:text-sm"
-                >
-                    <FaPlus className="text-xs md:text-sm" /> Add Testimonial
-                </motion.button>
-            </div>
 
             {/* Infinite Carousel */}
             <div className="relative overflow-hidden py-2 md:py-4 relative z-10">

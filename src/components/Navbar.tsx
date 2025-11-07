@@ -214,7 +214,7 @@ export default function Navbar() {
             )}
 
             {/* Small padding so content doesn't hide behind header */}
-            <div className="h-[2.5rem] sm:h-[3rem] md:h-[4rem]" aria-hidden />
+            <div className="h-6 sm:h-8 md:h-10" aria-hidden />
         </>
     );
 }
