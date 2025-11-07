@@ -34,7 +34,7 @@ export default function CreativeServicesSection() {
                     transition={{ duration: 0.5 }}
                     className="text-center mb-4"
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold mt-6 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 via-yellow-600 to-yellow-800">My Services </h2>  
+                    <h2 className="text-3xl md:text-4xl font-bold mt-6 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 via-yellow-600 to-yellow-800">My Services </h2>
                     <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
                     <p className="mt-2 text-lg md:text-2xl text-blue-950 max-w-3xl mx-auto">
                         Specialized development services tailored to your needs

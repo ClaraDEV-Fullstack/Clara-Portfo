@@ -129,28 +129,28 @@ export default function AboutPage() {
 
                                 {/* Desktop Version - Full Description */}
                                 <div className="hidden md:block">
-                                    <div className="mb-6">
-                            <span className="inline-block bg-blue-500 text-white text-sm px-3 py-1 rounded-full font-bold">
-                                1+ year experience
-                            </span>
+                                    <div className="mb-4">
+        <span className="inline-block bg-blue-500 text-white text-xs px-2 py-1 rounded-full font-semibold">
+            1+ year experience
+        </span>
                                     </div>
-                                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight leading-snug">
+                                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-black mb-4 tracking-tight leading-snug">
                                         Web & Mobile <br />
                                         <span className="text-blue-400">App Developer</span>
                                     </h2>
-                                    <div className="space-y-4">
-                                        <p className="text-lg md:text-xl lg:text-2xl font-medium leading-relaxed">
+                                    <div className="space-y-3">
+                                        <p className="text-base md:text-lg lg:text-xl font-medium leading-relaxed">
                                             I am a <span className="text-blue-400 font-semibold">full-stack developer</span> with expertise in
                                         </p>
-                                        <div className="flex flex-wrap gap-2">
-                                            <span className="text-lg md:text-xl lg:text-2xl font-medium text-blue-400">React</span>
-                                            <span className="text-lg md:text-xl lg:text-2xl font-medium">Next.js</span>
-                                            <span className="text-lg md:text-xl lg:text-2xl font-medium">JavaScript</span>
-                                            <span className="text-lg md:text-xl lg:text-2xl font-medium">Python</span>
-                                            <span className="text-lg md:text-xl lg:text-2xl font-medium">Django</span>
-                                            <span className="text-lg md:text-xl lg:text-2xl font-medium">PHP</span>
+                                        <div className="flex flex-wrap gap-1.5">
+                                            <span className="text-base md:text-lg lg:text-xl font-medium text-blue-400">React</span>
+                                            <span className="text-base md:text-lg lg:text-xl font-medium">Next.js</span>
+                                            <span className="text-base md:text-lg lg:text-xl font-medium">JavaScript</span>
+                                            <span className="text-base md:text-lg lg:text-xl font-medium">Python</span>
+                                            <span className="text-base md:text-lg lg:text-xl font-medium">Django</span>
+                                            <span className="text-base md:text-lg lg:text-xl font-medium">PHP</span>
                                         </div>
-                                        <p className="text-lg md:text-xl lg:text-2xl font-medium leading-relaxed">
+                                        <p className="text-base md:text-lg lg:text-xl font-medium leading-relaxed">
                                             Passionate about <span className="text-blue-400 font-semibold">coding</span>,
                                             <span className="text-blue-400 font-semibold"> AI integration</span>, and
                                             <span className="text-blue-400 font-semibold"> technology</span>.
@@ -200,33 +200,34 @@ export default function AboutPage() {
 
                                 {/* Desktop Version - Full Description */}
                                 <div className="hidden md:block">
-                                    <div className="mb-6">
-                            <span className="inline-block bg-blue-500 text-white text-sm px-3 py-1 rounded-full font-bold">
-                                3+ years experience
-                            </span>
+                                    <div className="mb-4">
+        <span className="inline-block bg-blue-500 text-white text-xs px-2 py-1 rounded-full font-semibold">
+            3+ years experience
+        </span>
                                     </div>
-                                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-6 tracking-tight leading-snug">
+                                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-black mb-4 tracking-tight leading-snug">
                                         Graphic & UX/UI <br />
                                         <span className="text-blue-400">Designer</span>
                                     </h2>
-                                    <div className="space-y-4">
-                                        <p className="text-lg md:text-xl lg:text-2xl font-medium leading-relaxed">
+                                    <div className="space-y-3">
+                                        <p className="text-base md:text-lg lg:text-xl font-medium leading-relaxed">
                                             I am a <span className="text-blue-400 font-semibold">graphic designer</span> with 3 years of experience
                                         </p>
-                                        <p className="text-lg md:text-xl lg:text-2xl font-medium leading-relaxed">
+                                        <p className="text-base md:text-lg lg:text-xl font-medium leading-relaxed">
                                             I create clean, modern visuals and interfaces using
                                         </p>
-                                        <div className="flex flex-wrap justify-end gap-2">
-                                            <span className="text-lg md:text-xl lg:text-2xl font-medium text-blue-400">Adobe Illustrator</span>
-                                            <span className="text-lg md:text-xl lg:text-2xl font-medium">Photoshop</span>
+                                        <div className="flex flex-wrap justify-end gap-2 mt-1">
+                                            <span className="text-base md:text-lg lg:text-xl font-medium text-blue-400">Adobe Illustrator</span>
+                                            <span className="text-base md:text-lg lg:text-xl font-medium">Photoshop</span>
                                         </div>
-                                        <p className="text-lg md:text-xl lg:text-2xl font-medium leading-relaxed">
+                                        <p className="text-base md:text-lg lg:text-xl font-medium leading-relaxed">
                                             Skilled in <span className="text-blue-400 font-semibold">typography</span>,
                                             <span className="text-blue-400 font-semibold"> color theory</span>, and
                                             <span className="text-blue-400 font-semibold"> brand identity</span>.
                                         </p>
                                     </div>
                                 </div>
+
                             </div>
                         </motion.div>
 

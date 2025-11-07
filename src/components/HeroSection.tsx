@@ -145,7 +145,7 @@ export default function HeroSection() {
                             transition={{ duration: 0.7, delay: 0.5 }}
                             className="text-base md:text-lg text-gray-300 leading-relaxed"
                         >
-                            I'm a passionate full-stack developer and graphic designer <br/>with expertise in creating modern web applications and stunning visual designs.
+                            I'm a passionate full-stack developer and graphic designer <br/>with expertise in creating modern web applications<br/> and stunning visual designs.
                         </motion.p>
 
                         {/* Magical skills */}
