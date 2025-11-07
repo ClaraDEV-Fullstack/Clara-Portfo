@@ -262,14 +262,17 @@ export default function ProjectsPage() {
                                             <span>View Demo</span>
                                         </motion.a>
                                         <motion.a
-                                            href={project.githubUrl}
-                                            className="flex items-center gap-2 px-4 py-2 bg-gray-200 text-black rounded-lg text-sm font-medium justify-center"
-                                            whileHover={{scale: 1.05, backgroundColor: "#E5E7EB"}}
-                                            whileTap={{scale: 0.95}}
+                                            href="https://github.com/ClaraDEV-Fullstack"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center gap-1 md:gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-gray-200 text-black rounded-lg text-xs md:text-sm font-medium justify-center"
+                                            whileHover={{ scale: 1.05, backgroundColor: "#E5E7EB" }}
+                                            whileTap={{ scale: 0.95 }}
                                         >
-                                            <FaGithub/>
+                                            <FaGithub className="text-sm md:text-base" />
                                             <span>GitHub</span>
                                         </motion.a>
+
                                     </div>
                                 </CardContent>
                             </Card>

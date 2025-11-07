@@ -26,6 +26,7 @@ export default function CreativeServicesSection() {
     return (
         <section className="py-4 px-4 bg-gradient-to-b from-blue-50 to-white relative overflow-hidden">
             <div className="max-w-[95%] mx-auto relative z-10">
+
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -33,15 +34,15 @@ export default function CreativeServicesSection() {
                     transition={{ duration: 0.5 }}
                     className="text-center mb-4"
                 >
-                    <h2 className="text-2xl font-bold text-gray-800 mb-2">My Services</h2>
-                    <div className="w-12 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
-                    <p className="mt-2 text-sm text-gray-600 max-w-2xl mx-auto">
+                    <h2 className="text-3xl md:text-4xl font-bold mt-6 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 via-yellow-600 to-yellow-800">My Services </h2>  
+                    <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
+                    <p className="mt-2 text-lg md:text-2xl text-blue-950 max-w-3xl mx-auto">
                         Specialized development services tailored to your needs
                     </p>
                 </motion.div>
 
                 {/* Creative Services Display */}
-                <div className="relative min-h-[300px] sm:min-h-[400px] flex items-center justify-center my-2">
+                <div className="relative min-h-[300px] sm:min-h-[400px] flex items-center justify-center my-1">
                     {/* Central circle - hidden on mobile */}
                     <div className="hidden sm:block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 sm:w-64 sm:h-64 rounded-full border-2 border-blue-200 flex items-center justify-center backdrop-blur-sm bg-white/80">
                         <div className="text-center p-2 sm:p-4">
@@ -83,18 +84,29 @@ export default function CreativeServicesSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.6 }}
-                    className="flex justify-center mt-2"
+                    className="flex justify-center mt-1"  // Reduced from mt-3 to mt-1
                 >
-                    <Link href="/services" className="group flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors">
-                        <span className="text-sm font-medium">See All Services</span>
+                    <Link
+                        href="/services"
+                        className="group relative flex items-center gap-2 px-6 py-2.5 rounded-full
+               bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600
+               text-white font-semibold shadow-lg hover:shadow-yellow-400/50
+               transition-all duration-300 hover:scale-105"
+                    >
+                        <span className="text-sm md:text-base">See All Services</span>
                         <motion.div
-                            className="p-1 sm:p-2 bg-blue-100 rounded-full group-hover:bg-blue-200 transition-colors"
+                            className="p-2 bg-white/20 rounded-full"
                             whileHover={{ x: 5 }}
+                            transition={{ type: 'spring', stiffness: 200 }}
                         >
-                            <FaArrowRight className="text-sm" />
+                            <FaArrowRight className="text-white text-sm md:text-base group-hover:translate-x-1 transition-transform duration-300" />
                         </motion.div>
+
+                        {/* Glow effect on hover */}
+                        <span className="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-700 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500"></span>
                     </Link>
                 </motion.div>
+
             </div>
 
             {/* Add animate.css animations */}

@@ -94,6 +94,18 @@ export default function TestimonialsPage() {
             return;
         }
 
+        // Check if testimonial already exists to prevent duplication
+        const isDuplicate = testimonials.some(t =>
+            t.clientName === formData.clientName &&
+            t.description === formData.description
+        );
+
+        if (isDuplicate) {
+            setMessageText('This testimonial already exists.');
+            setShowMessageModal(true);
+            return;
+        }
+
         const newTestimonial: Testimonial = {
             clientName: formData.clientName,
             socialHandle: formData.socialHandle,
@@ -147,54 +159,69 @@ export default function TestimonialsPage() {
     const displayedTestimonials = [...testimonials, ...testimonials];
 
     return (
-        <section className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 p-2 md:p-8 relative overflow-hidden">
+        <section className="bg-gradient-to-br from-gray-900 to-gray-800 p-2 md:p-4 relative overflow-hidden">
             {/* Background decoration */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-blue-600/10 to-transparent rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-blue-600/10 to-transparent rounded-full blur-3xl"></div>
+            <div className="absolute top-0 right-0 w-48 h-48 md:w-64 md:h-64 bg-gradient-to-br from-blue-600/10 to-transparent rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-48 h-48 md:w-64 md:h-64 bg-gradient-to-tr from-blue-600/10 to-transparent rounded-full blur-3xl"></div>
 
             {/* Header */}
-            <div className="text-center mb-6 md:mb-12 relative z-10">
+            <div className="text-center mb-4 md:mb-8 relative z-10">
                 <motion.h1
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="text-3xl md:text-5xl font-extrabold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-700 bg-clip-text text-transparent mb-2 md:mb-4"
+                    className="text-2xl md:text-4xl font-extrabold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-700 bg-clip-text text-transparent mb-1 md:mb-2"
                 >
                     What My Clients Say
                 </motion.h1>
-                <p className="text-sm md:text-lg text-white max-w-2xl mx-auto leading-relaxed px-2">
+                <p className="text-xs md:text-base text-white max-w-2xl mx-auto leading-relaxed px-2">
                     Discover how collaboration, creativity, and dedication have helped bring my clients' visions to life.
                     Their words reflect the results and relationships built along the way.
                 </p>
             </div>
 
+            {/* Add Testimonial Button */}
+            <div className="text-center mb-4 md:mb-8 relative z-10">
+                <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => {
+                        resetForm();
+                        setShowModal(true);
+                    }}
+                    className="px-3 py-1.5 md:px-4 md:py-2 bg-gradient-to-r from-blue-600 to-yellow-700 text-white font-semibold rounded-lg shadow-lg flex items-center justify-center mx-auto gap-1 md:gap-2 text-xs md:text-sm"
+                >
+                    <FaPlus className="text-xs md:text-sm" /> Add Testimonial
+                </motion.button>
+            </div>
+
             {/* Infinite Carousel */}
-            <div className="relative overflow-hidden py-4 md:py-8 relative z-10">
+            <div className="relative overflow-hidden py-2 md:py-4 relative z-10">
                 <div
-                    className="carousel-track gap-4 md:gap-8"
+                    className="carousel-track gap-2 md:gap-4"
                     ref={carouselRef}
                 >
                     {displayedTestimonials.map((t, idx) => (
                         <div
                             key={idx}
-                            className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl shadow-lg border border-gray-700 flex-shrink-0 w-[70%] md:w-[20%] p-3 md:p-5 flex flex-col cursor-pointer hover:shadow-xl transition-all duration-300 hover:border-yellow-600/30 h-72 md:h-96"
+                            className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl shadow-lg border border-gray-700 flex-shrink-0 w-[85%] md:w-[20%] p-2 md:p-3 flex flex-col cursor-pointer hover:shadow-xl transition-all duration-300 hover:border-yellow-600/30 h-60 md:h-80"
                             onClick={() => handleCardClick(t)}
                         >
                             {/* Header with rating */}
-                            <div className="flex justify-between items-start mb-2 md:mb-3">
-                                <div className="flex items-center gap-1 md:gap-2">
-                                    <div className="text-yellow-600 flex text-sm md:text-base">
+                            <div className="flex justify-between items-start mb-1 md:mb-2">
+                                <div className="flex items-center gap-1">
+                                    <div className="text-yellow-600 flex text-xs">
                                         {[...Array(5)].map((_, i) => (
-                                            <FaStar key={i} />
+                                            <FaStar key={i} className="text-xs" />
                                         ))}
                                     </div>
                                 </div>
-                                <FaQuoteLeft className="text-yellow-600/30 text-lg md:text-2xl" />
+                                <FaQuoteLeft className="text-yellow-600/30 text-sm md:text-lg" />
                             </div>
 
                             {/* Screenshot */}
                             {t.image && (
-                                <div className="relative h-32 md:h-56 w-full mb-2 md:mb-4 rounded-lg overflow-hidden group">
+                                <div className="relative h-24 md:h-40 w-full mb-1 md:mb-2 rounded-lg overflow-hidden group">
                                     <NextImage
                                         src={t.image}
                                         alt="Screenshot"
@@ -202,36 +229,36 @@ export default function TestimonialsPage() {
                                         className="object-cover transition-transform duration-300 group-hover:scale-105"
                                     />
                                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                        <FaExpand className="text-white text-xl md:text-2xl" />
+                                        <FaExpand className="text-white text-sm md:text-xl" />
                                     </div>
                                 </div>
                             )}
 
                             {/* Description */}
-                            <div className="flex-grow mb-2 md:mb-4 overflow-hidden">
-                                <div className="bg-gray-700/30 rounded-lg p-2 md:p-3 h-16 md:h-24 overflow-hidden">
-                                    <p className="text-gray-200 text-xs md:text-sm break-words">
-                                        {t.description.length > 60
-                                            ? `${t.description.substring(0, 60)}...`
+                            <div className="flex-grow mb-1 md:mb-2 overflow-hidden">
+                                <div className="bg-gray-700/30 rounded-lg p-1.5 md:p-2 h-12 md:h-16 overflow-hidden">
+                                    <p className="text-gray-200 text-xs break-words">
+                                        {t.description.length > 40
+                                            ? `${t.description.substring(0, 40)}...`
                                             : t.description}
                                     </p>
                                 </div>
-                                {t.description.length > 60 && (
-                                    <div className="text-yellow-600 text-xs mt-1 flex items-center">
-                                        <span>Click to read more</span>
+                                {t.description.length > 40 && (
+                                    <div className="text-yellow-600 text-xs mt-0.5 flex items-center">
+                                        <span className="text-xs">Click to read more</span>
                                     </div>
                                 )}
                             </div>
 
                             {/* Footer */}
-                            <div className="flex justify-between items-center text-xs md:text-sm pt-2 md:pt-3 border-t border-gray-600">
-                                <div className="flex items-center gap-1 md:gap-2">
-                                    <div className="text-sm md:text-base">
+                            <div className="flex justify-between items-center text-xs pt-1 md:pt-2 border-t border-gray-600">
+                                <div className="flex items-center gap-1">
+                                    <div className="text-xs">
                                         {socialIcons[t.socialSite]}
                                     </div>
                                     <div>
-                                        <div className="text-white font-medium truncate max-w-[60px] md:max-w-[80px] text-xs md:text-sm">{t.clientName}</div>
-                                        <div className="text-gray-400 text-xs truncate max-w-[60px] md:max-w-[80px]">{t.socialHandle}</div>
+                                        <div className="text-white font-medium truncate max-w-[50px] text-xs">{t.clientName}</div>
+                                        <div className="text-gray-400 text-xs truncate max-w-[50px]">{t.socialHandle}</div>
                                     </div>
                                 </div>
                                 <div className="text-gray-400 text-xs">
@@ -258,23 +285,23 @@ export default function TestimonialsPage() {
                             animate={{ scale: 1, y: 0 }}
                             exit={{ scale: 0.9, opacity: 0 }}
                         >
-                            <div className="p-4 md:p-6 border-b border-gray-700 flex justify-between items-center">
-                                <h2 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-700 bg-clip-text text-transparent">Add Testimonial</h2>
+                            <div className="p-3 md:p-4 border-b border-gray-700 flex justify-between items-center">
+                                <h2 className="text-lg md:text-xl font-bold bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-700 bg-clip-text text-transparent">Add Testimonial</h2>
                                 <button
                                     onClick={() => {
                                         setShowModal(false);
                                         resetForm();
                                     }}
-                                    className="p-2 rounded-full hover:bg-gray-700 transition-colors"
+                                    className="p-1.5 rounded-full hover:bg-gray-700 transition-colors"
                                 >
-                                    <FaTimes className="text-white" />
+                                    <FaTimes className="text-white text-sm" />
                                 </button>
                             </div>
 
-                            <div className="p-4 md:p-6 space-y-4 md:space-y-6">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                            <div className="p-3 md:p-4 space-y-3 md:space-y-4">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3">
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-300 mb-1">
+                                        <label className="block text-xs font-medium text-gray-300 mb-1">
                                             Client Name *
                                         </label>
                                         <input
@@ -282,11 +309,11 @@ export default function TestimonialsPage() {
                                             placeholder="John Doe"
                                             value={formData.clientName}
                                             onChange={(e) => setFormData({ ...formData, clientName: e.target.value })}
-                                            className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg bg-gray-700/50 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent text-sm"
+                                            className="w-full px-2 md:px-3 py-1.5 md:py-2 rounded-lg bg-gray-700/50 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent text-xs"
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-300 mb-1">
+                                        <label className="block text-xs font-medium text-gray-300 mb-1">
                                             Social Handle *
                                         </label>
                                         <input
@@ -294,19 +321,19 @@ export default function TestimonialsPage() {
                                             placeholder="@johndoe"
                                             value={formData.socialHandle}
                                             onChange={(e) => setFormData({ ...formData, socialHandle: e.target.value })}
-                                            className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg bg-gray-700/50 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent text-sm"
+                                            className="w-full px-2 md:px-3 py-1.5 md:py-2 rounded-lg bg-gray-700/50 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent text-xs"
                                         />
                                     </div>
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-300 mb-1">
+                                    <label className="block text-xs font-medium text-gray-300 mb-1">
                                         Social Platform *
                                     </label>
                                     <select
                                         value={formData.socialSite}
                                         onChange={(e) => setFormData({ ...formData, socialSite: e.target.value as Testimonial['socialSite'] })}
-                                        className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg bg-gray-700/50 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent text-sm"
+                                        className="w-full px-2 md:px-3 py-1.5 md:py-2 rounded-lg bg-gray-700/50 border border-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent text-xs"
                                     >
                                         <option value="LinkedIn">LinkedIn</option>
                                         <option value="Twitter">Twitter</option>
@@ -316,23 +343,23 @@ export default function TestimonialsPage() {
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-300 mb-1">
+                                    <label className="block text-xs font-medium text-gray-300 mb-1">
                                         Testimonial Description *
                                     </label>
                                     <textarea
                                         value={formData.description}
                                         onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                                         placeholder="What did the client say about your work?"
-                                        className="w-full px-3 md:px-4 py-2 md:py-3 rounded-lg bg-gray-700/50 border border-gray-600 text-white placeholder-gray-400 min-h-[80px] md:min-h-[120px] focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent resize-none text-sm"
+                                        className="w-full px-2 md:px-3 py-1.5 md:py-2 rounded-lg bg-gray-700/50 border border-gray-600 text-white placeholder-gray-400 min-h-[60px] md:min-h-[80px] focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:border-transparent resize-none text-xs"
                                     ></textarea>
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-300 mb-1">
+                                    <label className="block text-xs font-medium text-gray-300 mb-1">
                                         Testimonial Screenshot *
                                     </label>
-                                    <div className="flex items-center gap-4">
-                                        <label className="flex flex-col items-center justify-center w-24 h-24 md:w-32 md:h-32 border-2 border-dashed border-gray-500 rounded-lg cursor-pointer bg-gray-700/30 hover:bg-gray-600/50 transition-colors">
+                                    <div className="flex flex-col md:flex-row items-start md:items-center gap-3">
+                                        <label className="flex flex-col items-center justify-center w-20 h-20 md:w-24 md:h-24 border-2 border-dashed border-gray-500 rounded-lg cursor-pointer bg-gray-700/30 hover:bg-gray-600/50 transition-colors">
                                             {imagePreview ? (
                                                 <NextImage
                                                     src={imagePreview}
@@ -343,8 +370,8 @@ export default function TestimonialsPage() {
                                                 />
                                             ) : (
                                                 <div className="flex flex-col items-center justify-center text-white">
-                                                    <FaImage className="text-xl md:text-3xl mb-1 md:mb-2" />
-                                                    <span className="text-xs text-white text-center px-1">Upload Image</span>
+                                                    <FaImage className="text-lg md:text-xl mb-1" />
+                                                    <span className="text-xs text-white text-center px-1">Upload</span>
                                                 </div>
                                             )}
                                             <input
@@ -355,18 +382,18 @@ export default function TestimonialsPage() {
                                                 disabled={loading}
                                             />
                                         </label>
-                                        <div>
+                                        <div className="mt-1 md:mt-0">
                                             {loading ? (
-                                                <div className="flex items-center text-yellow-600 text-sm">
-                                                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-yellow-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                <div className="flex items-center text-yellow-600 text-xs">
+                                                    <svg className="animate-spin -ml-1 mr-2 h-3 w-3 text-yellow-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                                                     </svg>
                                                     Processing...
                                                 </div>
                                             ) : (
-                                                <p className="text-xs md:text-sm text-gray-300">
-                                                    Upload a testimonial screenshot. Recommended size: 800x600px.
+                                                <p className="text-xs text-gray-300">
+                                                    Upload testimonial screenshot. Recommended: 800x600px.
                                                 </p>
                                             )}
                                         </div>
@@ -374,21 +401,21 @@ export default function TestimonialsPage() {
                                 </div>
                             </div>
 
-                            <div className="p-4 md:p-6 border-t border-gray-700 flex justify-end gap-3">
+                            <div className="p-3 md:p-4 border-t border-gray-700 flex justify-end gap-2">
                                 <button
                                     onClick={() => {
                                         setShowModal(false);
                                         resetForm();
                                     }}
-                                    className="px-3 py-2 md:px-4 md:py-2 border border-gray-300 text-gray-300 rounded-lg hover:bg-gray-700/50 transition-colors text-sm"
+                                    className="px-2 py-1.5 md:px-3 md:py-1.5 border border-gray-300 text-gray-300 rounded-lg hover:bg-gray-700/50 transition-colors text-xs"
                                 >
                                     Cancel
                                 </button>
                                 <button
                                     onClick={handleAddTestimonial}
-                                    className="px-3 py-2 md:px-4 md:py-2 bg-gradient-to-r from-yellow-700 to-yellow-800 text-white rounded-lg hover:from-yellow-800 hover:to-yellow-900 transition-all flex items-center gap-2 text-sm"
+                                    className="px-2 py-1.5 md:px-3 md:py-1.5 bg-gradient-to-r from-yellow-700 to-yellow-800 text-white rounded-lg hover:from-yellow-800 hover:to-yellow-900 transition-all flex items-center gap-1 text-xs"
                                 >
-                                    <FaCheck /> Add Testimonial
+                                    <FaCheck className="text-xs" /> Add
                                 </button>
                             </div>
                         </motion.div>
@@ -413,31 +440,31 @@ export default function TestimonialsPage() {
                             exit={{ scale: 0.9, opacity: 0 }}
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <div className="p-4 md:p-6 border-b border-gray-700 flex justify-between items-center">
-                                <h2 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-700 bg-clip-text text-transparent">
+                            <div className="p-3 md:p-4 border-b border-gray-700 flex justify-between items-center">
+                                <h2 className="text-lg md:text-xl font-bold bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-700 bg-clip-text text-transparent">
                                     Testimonial Details
                                 </h2>
                                 <button
                                     onClick={() => setShowExpandModal(false)}
-                                    className="p-2 rounded-full hover:bg-gray-700 transition-colors"
+                                    className="p-1.5 rounded-full hover:bg-gray-700 transition-colors"
                                 >
-                                    <FaTimes className="text-white" />
+                                    <FaTimes className="text-white text-sm" />
                                 </button>
                             </div>
 
-                            <div className="p-4 md:p-6">
+                            <div className="p-3 md:p-4">
                                 {/* Header with rating and client info */}
-                                <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4 md:mb-6">
-                                    <div className="flex items-center gap-2 md:gap-4 mb-2 md:mb-0">
-                                        <div className="text-yellow-600 flex text-lg md:text-2xl">
+                                <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-3 md:mb-4">
+                                    <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-0">
+                                        <div className="text-yellow-600 flex text-base md:text-xl">
                                             {[...Array(5)].map((_, i) => (
                                                 <FaStar key={i} />
                                             ))}
                                         </div>
                                         <div>
-                                            <div className="text-white text-lg md:text-xl font-medium">{selectedTestimonial.clientName}</div>
-                                            <div className="flex items-center gap-1 md:gap-2 text-gray-400 text-sm">
-                                                <div className="text-base md:text-lg">
+                                            <div className="text-white text-base md:text-lg font-medium">{selectedTestimonial.clientName}</div>
+                                            <div className="flex items-center gap-1 md:gap-2 text-gray-400 text-xs">
+                                                <div className="text-sm md:text-base">
                                                     {socialIcons[selectedTestimonial.socialSite]}
                                                 </div>
                                                 <span>{selectedTestimonial.socialHandle}</span>
@@ -453,7 +480,7 @@ export default function TestimonialsPage() {
 
                                 {/* Full size image */}
                                 {selectedTestimonial.image && (
-                                    <div className="relative h-48 md:h-96 w-full mb-4 md:mb-6 rounded-lg overflow-hidden">
+                                    <div className="relative h-40 md:h-80 w-full mb-3 md:mb-4 rounded-lg overflow-hidden">
                                         <NextImage
                                             src={selectedTestimonial.image}
                                             alt="Testimonial Screenshot"
@@ -464,20 +491,20 @@ export default function TestimonialsPage() {
                                 )}
 
                                 {/* Full testimonial text */}
-                                <div className="mb-4 md:mb-6">
-                                    <h3 className="text-base md:text-lg font-semibold text-yellow-600 mb-2 md:mb-3">Testimonial</h3>
-                                    <div className="bg-gray-700/50 rounded-lg p-3 md:p-6">
-                                        <p className="text-gray-200 text-sm md:text-lg leading-relaxed whitespace-pre-line break-words">
+                                <div className="mb-3 md:mb-4">
+                                    <h3 className="text-sm md:text-base font-semibold text-yellow-600 mb-1 md:mb-2">Testimonial</h3>
+                                    <div className="bg-gray-700/50 rounded-lg p-2 md:p-4">
+                                        <p className="text-gray-200 text-xs md:text-base leading-relaxed whitespace-pre-line break-words">
                                             {selectedTestimonial.description}
                                         </p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div className="p-4 md:p-6 border-t border-gray-700 flex justify-end">
+                            <div className="p-3 md:p-4 border-t border-gray-700 flex justify-end">
                                 <button
                                     onClick={() => setShowExpandModal(false)}
-                                    className="px-4 py-2 md:px-6 md:py-3 bg-gradient-to-r from-yellow-700 to-yellow-800 text-white font-medium rounded-lg hover:from-yellow-800 hover:to-yellow-900 transition-all text-sm"
+                                    className="px-3 py-1.5 md:px-4 md:py-2 bg-gradient-to-r from-yellow-700 to-yellow-800 text-white font-medium rounded-lg hover:from-yellow-800 hover:to-yellow-900 transition-all text-xs"
                                 >
                                     Close
                                 </button>
@@ -497,21 +524,21 @@ export default function TestimonialsPage() {
                         exit={{ opacity: 0 }}
                     >
                         <motion.div
-                            className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-2xl shadow-2xl w-full max-w-md p-6 md:p-8 border border-gray-700"
+                            className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-2xl shadow-2xl w-full max-w-md p-4 md:p-6 border border-gray-700"
                             initial={{ scale: 0.9, y: 20 }}
                             animate={{ scale: 1, y: 0 }}
                             exit={{ scale: 0.9, opacity: 0 }}
                         >
-                            <div className="flex justify-center mb-4 md:mb-6">
-                                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-r from-yellow-700 to-yellow-800 flex items-center justify-center">
-                                    <FaCheck className="text-gray-900 text-xl md:text-3xl" />
+                            <div className="flex justify-center mb-3 md:mb-4">
+                                <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-gradient-to-r from-yellow-700 to-yellow-800 flex items-center justify-center">
+                                    <FaCheck className="text-gray-900 text-base md:text-xl" />
                                 </div>
                             </div>
-                            <p className="text-white text-center mb-4 md:mb-8 text-base md:text-lg">{messageText}</p>
+                            <p className="text-white text-center mb-3 md:mb-4 text-sm md:text-base">{messageText}</p>
                             <div className="flex justify-center">
                                 <button
                                     onClick={() => setShowMessageModal(false)}
-                                    className="px-4 py-2 md:px-6 md:py-3 bg-gradient-to-r from-yellow-700 to-yellow-800 text-white font-medium rounded-lg hover:from-yellow-800 hover:to-yellow-900 transition-all text-sm"
+                                    className="px-3 py-1.5 md:px-4 md:py-2 bg-gradient-to-r from-yellow-700 to-yellow-800 text-white font-medium rounded-lg hover:from-yellow-800 hover:to-yellow-900 transition-all text-xs"
                                 >
                                     OK
                                 </button>

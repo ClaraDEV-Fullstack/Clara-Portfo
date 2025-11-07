@@ -63,7 +63,7 @@ export default function InfiniteSkillsSection() {
                     transition={{ duration: 0.5 }}
                     className="text-center mb-8"
                 >
-                    <h2 className="text-2xl md:text-4xl font-bold text-white mb-4">My Skills</h2>
+                    <h2 className="text-2xl md:text-4xl font-bold  mb-4 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 via-yellow-600 to-yellow-800">My Skills</h2>
                     <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
                     <p className="mt-4 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
                         Technologies and tools I specialize in
