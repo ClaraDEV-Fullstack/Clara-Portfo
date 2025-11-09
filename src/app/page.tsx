@@ -19,11 +19,11 @@ export default function Home() {
                 {/* Hero Section */}
                 <HeroSection />
 
-                {/* About Section */}
-                <AboutSection />
-
                 {/* My Skills Section */}
                 <MySkillsSection />
+
+                {/* About Section */}
+                <AboutSection />
 
                 {/* My Services Section */}
                 <MyServicesSection />

@@ -57,8 +57,8 @@ const backendSkills = [
 const mobileSkills = [
     { name: "Dart", icon: <SiDart className="text-blue-400" /> },
     { name: "Flutter", icon: <SiFlutter className="text-cyan-400" /> },
-    { name: "iOS Development", icon: <FaApple className="text-gray-200" /> },
-    { name: "Android Development", icon: <FaAndroid className="text-green-500" /> },
+    { name: "iOS", icon: <FaApple className="text-gray-200" /> },
+    { name: "Android", icon: <FaAndroid className="text-green-500" /> },
     { name: "Cross-Platform", icon: <FaMobileAlt className="text-purple-500" /> },
     { name: "Mobile UI/UX", icon: <FaPalette className="text-pink-500" /> },
 ];
@@ -166,13 +166,14 @@ export default function SkillsPage() {
 
                         {/* Main title with gradient text */}
                         <motion.h1
-                            className="text-3xl md:text-5xl md:text-6xl font-bold mb-2 md:mb-4 bg-clip-text text-transparent bg-white"
+                            className="text-3xl md:text-5xl font-bold mb-3 md:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600"
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
                         >
-                            My Skills
+                            Skills
                         </motion.h1>
+
 
                         {/* Decorative elements */}
                         <div className="flex justify-center items-center space-x-2 md:space-x-4 mb-2 md:mb-4">

@@ -149,8 +149,9 @@ export default function CareerPage() {
                 <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-r from-yellow-600 to-yellow-800 mb-6 shadow-lg">
                     <FaGraduationCap className="text-white text-3xl" />
                 </div>
+
                 <h1
-                    className={`${montserrat.className} text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent`}
+                    className={`${montserrat.className} text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent`}
                 >
                     Career Journey
                 </h1>
@@ -174,11 +175,16 @@ export default function CareerPage() {
                         <div className="relative w-full mb-8">
                             <div className="relative overflow-hidden rounded-[50%_50%_0%_0%] w-full aspect-[3/4]">
                                 <Image
-                                    src="/images/expense-tracker.jpg"
+                                    src="/images/aboutpic.jpg"
                                     alt="Professional portrait"
                                     fill
-                                    className="object-cover w-full h-full"
+                                    className="object-cover w-full h-full scale-110 transition-transform duration-700 ease-in-out"
+                                    style={{
+                                        objectPosition: "center top", // Keeps your head fully visible
+                                    }}
+                                    priority
                                 />
+
                                 {/* Gradient overlay */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/50"></div>
                             </div>
@@ -206,6 +212,7 @@ export default function CareerPage() {
                                 Multidisciplinary
                             </motion.div>
                         </div>
+
 
                         {/* Quote Section - Moved under image */}
                         <motion.div

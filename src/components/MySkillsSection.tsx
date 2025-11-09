@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import { FaCode, FaDatabase, FaMobile, FaPalette, FaServer, FaTools } from 'react-icons/fa';
+import { useInView } from 'react-intersection-observer';
+import 'animate.css';
 
 // Import icons for the skills
 import {
@@ -53,26 +55,62 @@ export default function InfiniteSkillsSection() {
     // Duplicate skills for infinite scroll effect
     const duplicatedSkills = [...skills, ...skills];
 
+    // Animation classes for falling effect
+    const fallAnimations = [
+        "animate__bounceInDown",
+        "animate__fadeInDown",
+        "animate__slideInDown",
+        "animate__zoomInDown",
+        "animate__lightSpeedInRight",
+        "animate__jackInTheBox",
+        "animate__fadeInUp",
+        "animate__bounceInUp",
+        "animate__slideInUp",
+        "animate__zoomInUp",
+        "animate__rotateIn",
+        "animate__rotateInDownLeft",
+        "animate__rotateInDownRight",
+        "animate__rotateInUpLeft",
+        "animate__rotateInUpRight",
+        "animate__bounceIn",
+        "animate__fadeIn",
+        "animate__zoomIn",
+        "animate__slideInLeft",
+        "animate__slideInRight",
+        "animate__bounce",
+        "animate__flash",
+        "animate__pulse",
+        "animate__rubberBand",
+        "animate__shakeX",
+        "animate__shakeY",
+        "animate__headShake",
+        "animate__swing",
+        "animate__tada",
+        "animate__wobble",
+        "animate__jello",
+        "animate__heartBeat"
+    ];
+
     return (
-        <section className="py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black to-gray-900 overflow-hidden">
+        <section className="py-6 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-100 to-blue-50 overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="text-center mb-8"
+                    className="text-center mb-4"
                 >
-                    <h2 className="text-2xl md:text-4xl font-bold  mb-4 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 via-yellow-600 to-yellow-800">My Skills</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold mt-6 bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 via-yellow-600 to-yellow-800">My Skills </h2>
                     <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
-                    <p className="mt-4 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+                    <p className="mt-2 text-lg md:text-2xl text-blue-950 max-w-3xl mx-auto">
                         Technologies and tools I specialize in
                     </p>
                 </motion.div>
 
                 {/* Infinite Scrolling Skills */}
                 <div
-                    className="relative w-full overflow-hidden py-4"
+                    className="relative w-full overflow-hidden py-3"
                     onMouseEnter={() => setIsPaused(true)}
                     onMouseLeave={() => setIsPaused(false)}
                 >
@@ -84,102 +122,50 @@ export default function InfiniteSkillsSection() {
                             width: 'max-content'
                         }}
                     >
-                        {duplicatedSkills.map((skill, index) => (
-                            <motion.div
-                                key={`${skill.name}-${index}`}
-                                className="flex flex-col items-center justify-center p-3 bg-gray-800/50 backdrop-blur-sm rounded-xl border border-gray-700 min-w-[80px]"
-                                whileHover={{
-                                    y: -5,
-                                    boxShadow: '0 10px 25px rgba(59, 130, 246, 0.3)',
-                                    transition: { duration: 0.3 }
-                                }}
-                            >
-                                <div className="w-8 h-8 flex items-center justify-center text-2xl mb-1">
-                                    {skill.icon}
-                                </div>
-                                <span className="text-white text-center text-xs font-medium">{skill.name}</span>
-                            </motion.div>
-                        ))}
+                        {duplicatedSkills.map((skill, index) => {
+                            // Use modulo to cycle through animations
+                            const animationClass = fallAnimations[index % fallAnimations.length];
+
+                            return (
+                                <motion.div
+                                    key={`${skill.name}-${index}`}
+                                    className="flex flex-col items-center justify-center p-3 bg-gray-900 rounded-xl border border-gray-800 shadow-lg min-w-[100px] hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
+                                    whileHover={{
+                                        y: -8,
+                                        boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
+                                        transition: { duration: 0.3 }
+                                    }}
+                                    initial={{ opacity: 0, y: -100 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{
+                                        type: "spring",
+                                        stiffness: 300,
+                                        damping: 15,
+                                        delay: index * 0.08
+                                    }}
+                                >
+                                    {/* Shining effect overlay */}
+                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+
+                                    {/* Merging glow effect */}
+                                    <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                        <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-sm"></div>
+                                    </div>
+
+                                    {/* Landing shadow effect */}
+                                    <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-t from-black/40 to-transparent rounded-b-xl"></div>
+
+                                    <div className="w-12 h-12 flex items-center justify-center text-3xl mb-2 relative z-10">
+                                        {skill.icon}
+                                        {/* Icon shine effect */}
+                                        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-white/30 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+                                    </div>
+                                    <span className="text-white text-center text-sm font-semibold relative z-10">{skill.name}</span>
+                                </motion.div>
+                            );
+                        })}
                     </div>
-                </div>
-
-                {/* Skills Categories */}
-                <div className="mt-6 md:mt-20 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
-                    {/* Frontend */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.1 }}
-                        className="bg-gradient-to-br from-blue-900/30 to-blue-800/20 p-3 md:p-6 rounded-xl border border-blue-700/30"
-                    >
-                        <div className="flex items-center gap-2 mb-2 md:mb-4">
-                            <div className="p-1 md:p-3 bg-blue-500/20 rounded-lg">
-                                <FaCode className="text-blue-400 text-lg md:text-xl" />
-                            </div>
-                            <h3 className="text-base md:text-xl font-semibold text-white">Frontend</h3>
-                        </div>
-                        <p className="text-gray-300 text-xs md:text-base">
-                            Creating responsive, interactive user interfaces with modern frameworks
-                        </p>
-                    </motion.div>
-
-                    {/* Backend */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                        className="bg-gradient-to-br from-green-900/30 to-green-800/20 p-3 md:p-6 rounded-xl border border-green-700/30"
-                    >
-                        <div className="flex items-center gap-2 mb-2 md:mb-4">
-                            <div className="p-1 md:p-3 bg-green-500/20 rounded-lg">
-                                <FaServer className="text-green-400 text-lg md:text-xl" />
-                            </div>
-                            <h3 className="text-base md:text-xl font-semibold text-white">Backend</h3>
-                        </div>
-                        <p className="text-gray-300 text-xs md:text-base">
-                            Building robust server-side applications and APIs
-                        </p>
-                    </motion.div>
-
-                    {/* Design */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.3 }}
-                        className="bg-gradient-to-br from-purple-900/30 to-purple-800/20 p-3 md:p-6 rounded-xl border border-purple-700/30"
-                    >
-                        <div className="flex items-center gap-2 mb-2 md:mb-4">
-                            <div className="p-1 md:p-3 bg-purple-500/20 rounded-lg">
-                                <FaPalette className="text-purple-400 text-lg md:text-xl" />
-                            </div>
-                            <h3 className="text-base md:text-xl font-semibold text-white">Design</h3>
-                        </div>
-                        <p className="text-gray-300 text-xs md:text-base">
-                            Crafting beautiful and intuitive user experiences
-                        </p>
-                    </motion.div>
-
-                    {/* Tools */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.4 }}
-                        className="bg-gradient-to-br from-yellow-900/30 to-yellow-800/20 p-3 md:p-6 rounded-xl border border-yellow-700/30"
-                    >
-                        <div className="flex items-center gap-2 mb-2 md:mb-4">
-                            <div className="p-1 md:p-3 bg-yellow-500/20 rounded-lg">
-                                <FaTools className="text-yellow-400 text-lg md:text-xl" />
-                            </div>
-                            <h3 className="text-base md:text-xl font-semibold text-white">Tools</h3>
-                        </div>
-                        <p className="text-gray-300 text-xs md:text-base">
-                            Utilizing modern development and design tools
-                        </p>
-                    </motion.div>
                 </div>
 
             </div>

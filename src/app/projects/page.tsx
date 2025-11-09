@@ -40,67 +40,54 @@ interface Project {
 const projects: Project[] = [
     {
         id: 1,
-        title: "Future Expense Tracker",
-        description: "A comprehensive expense tracking application with budget management, expense categorization, and financial insights.",
-        technologies: ["Django", "Python", "MySQL", "REST APIs", "JavaScript"],
+        title: "AI-Powered Expense Tracker",
+        description:
+            "Built with Django (backend) and Flutter (mobile frontend). Automatically categorizes expenses and predicts spending patterns using AI analytics. Dynamic charts, budget tracking, and personalized financial recommendations.",
+        technologies: ["Django", "Flutter", "AI Analytics", "Python"],
         image: "/images/expense-tracker.jpg",
-        demoUrl: "#",
-        githubUrl: "#",
+        demoUrl: "#", // Replace with deployed link later
+        githubUrl: "https://github.com/ClaraDEV-Fullstack",
         status: "In Progress",
         featured: true
     },
     {
         id: 2,
-        title: "React Django Full-Stack App",
-        description: "A modern web application combining React frontend with Django backend, featuring user authentication and real-time updates.",
-        technologies: ["React", "Django", "Python", "PostgreSQL", "Redux"],
-        image: "/images/react-django-app.jpg",
-        demoUrl: "#",
-        githubUrl: "#",
+        title: "Smart Job Matching Platform",
+        description:
+            "A web platform connecting job seekers and recruiters with AI-driven recommendations. Matches candidates to jobs based on skills and experience. Recruiters get ranked candidate suggestions automatically.",
+        technologies: ["React", "Next.js", "Django", "AI Recommendations"],
+        image: "/images/portfolio-website.jpg",
+        demoUrl: "#", // Replace with deployed link later
+        githubUrl: "https://github.com/ClaraDEV-Fullstack",
         status: "Planning Phase",
         featured: true
     },
     {
         id: 3,
-        title: "E-commerce Platform",
-        description: "A full-featured online shopping platform with cart, payment integration, and admin dashboard.",
-        technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Stripe", "MongoDB"],
-        image: "/images/ecommerce-platform.jpg",
-        demoUrl: "#",
-        githubUrl: "#",
-        status: "Completed"
+        title: "Personalized Learning Platform",
+        description:
+            "Recommends courses and resources based on user preferences and learning history. Features AI-driven quizzes, dynamic progress tracking, and adaptive learning paths to personalize user experiences.",
+        technologies: ["React", "Next.js", "AI Personalization", "UX/UI"],
+        image: "/images/react-django-app.jpg",
+        demoUrl: "#", // Replace with deployed link later
+        githubUrl: "https://github.com/ClaraDEV-Fullstack",
+        status: "Planning Phase",
+        featured: false
     },
     {
         id: 4,
-        title: "Task Management App",
-        description: "A productivity application for managing tasks and projects with team collaboration features.",
-        technologies: ["React", "Node.js", "Express", "MongoDB", "Socket.io"],
-        image: "/images/task-management.jpg",
-        demoUrl: "#",
-        githubUrl: "#",
-        status: "Completed"
-    },
-    {
-        id: 5,
-        title: "Weather Dashboard",
-        description: "Real-time weather information with interactive maps and 5-day forecasts.",
-        technologies: ["JavaScript", "API Integration", "Chart.js", "Geolocation"],
-        image: "/images/weather-dashboard.jpg",
-        demoUrl: "#",
-        githubUrl: "#",
-        status: "Completed"
-    },
-    {
-        id: 6,
-        title: "Portfolio Website",
-        description: "A responsive portfolio website with project showcase and contact form.",
-        technologies: ["Next.js", "Tailwind CSS", "Framer Motion"],
-        image: "/images/portfolio-website.jpg",
-        demoUrl: "#",
-        githubUrl: "#",
-        status: "Completed"
+        title: "AI Customer Recommendation Chatbot",
+        description:
+            "An intelligent chatbot built with natural language processing (NLP) and machine learning. It interacts with customers in real-time, understands preferences, and provides personalized product or service recommendations. Integrated with business APIs and capable of learning user behavior over time for improved accuracy.",
+        technologies: ["Python", "Django REST", "React", "NLP", "OpenAI API", "Dialogflow"],
+        image: "/images/ai-chatbot.jpg", // Replace with actual chatbot image later
+        demoUrl: "#", // Replace with deployed link later
+        githubUrl: "https://github.com/ClaraDEV-Fullstack",
+        status: "In Progress",
+        featured: true,
     }
 ];
+
 
 // Map technology names to icons
 const getTechIcon = (tech: string) => {
@@ -156,19 +143,40 @@ export default function ProjectsPage() {
                     className="text-center mb-16 px-4 sm:px-6 lg:px-0"
                 >
                     {/* Decorative spoke graphic */}
-                    <div className="relative inline-block mb-6">
+                    <div className="text-center relative mb-12 w-full max-w-5xl mx-auto px-4">
+                        {/* Animated circular glow behind the heading */}
                         <div className="absolute inset-0 flex justify-center items-center">
-                            <div className="w-32 h-32 border-4 border-white/20 rounded-full animate-spin-slow"></div>
+                            <div className="w-28 h-28 md:w-40 md:h-40 bg-gradient-to-tr from-cyan-400/20 via-blue-500/10 to-purple-500/20 rounded-full blur-2xl animate-pulse"></div>
                         </div>
-                        <h2 className="relative text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight">
-                            My Projects
-                        </h2>
+
+                        {/* Heading with subtle spin ring */}
+                        <div className="relative inline-block">
+                            <div className="absolute inset-0 flex justify-center items-center">
+                                <div className="w-24 h-24 border-4 border-cyan-300/30 rounded-full animate-spin-slow"></div>
+                            </div>
+                            <h2 className="relative text-3xl sm:text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-yellow-400 to-blue-600 tracking-tight drop-shadow-md">
+                                My Projects
+                            </h2>
+                        </div>
+
+                        {/* Section Description - First Part */}
+                        <div className="mt-5 text-base sm:text-lg md:text-xl text-blue-100/90 max-w-xl mx-auto leading-relaxed">
+                            Explore my recent work — intelligent, full-stack applications blending
+                            <span className="font-semibold text-cyan-300"> AI</span>, creativity, and robust development.
+                        </div>
+
+                        {/* Section Description - Second Part */}
+                        <div className="mt-3 text-base sm:text-lg md:text-xl text-blue-100/90 max-w-3xl mx-auto leading-relaxed">
+                            Each project showcases innovation, scalability, and real-world problem-solving.
+                            Hover over a project to reveal its core technologies and live demo.
+                        </div>
+
+                        {/* Decorative underline */}
+                        <div className="mt-6 flex justify-center">
+                            <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-full animate-pulse"></div>
+                        </div>
                     </div>
 
-                    <p className="mt-4 text-lg sm:text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed">
-                        Recent work I've done. Here are some of my projects, both completed and in progress. Each
-                        project reflects my skills and passion for creating impactful solutions.
-                    </p>
                 </motion.div>
 
                 {/* Filters */}
@@ -251,29 +259,31 @@ export default function ProjectsPage() {
                                     </div>
 
                                     {/* Action Buttons */}
-                                    <div className="flex flex-col sm:flex-row justify-between mt-auto gap-2">
+                                    <div className="flex flex-row justify-between mt-auto gap-2 flex-wrap">
                                         <motion.a
                                             href={project.demoUrl}
-                                            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg text-sm font-medium justify-center"
-                                            whileHover={{scale: 1.05}}
-                                            whileTap={{scale: 0.95}}
+                                            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg text-sm font-medium justify-center flex-1 text-center"
+                                            whileHover={{ scale: 1.05 }}
+                                            whileTap={{ scale: 0.95 }}
                                         >
-                                            <FaExternalLinkAlt/>
+                                            <FaExternalLinkAlt />
                                             <span>View Demo</span>
                                         </motion.a>
+
                                         <motion.a
                                             href="https://github.com/ClaraDEV-Fullstack"
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="flex items-center gap-1 md:gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-gray-200 text-black rounded-lg text-xs md:text-sm font-medium justify-center"
+                                            className="flex items-center gap-2 px-4 py-2 bg-gray-200 text-black rounded-lg text-sm font-medium justify-center flex-1 text-center"
                                             whileHover={{ scale: 1.05, backgroundColor: "#E5E7EB" }}
                                             whileTap={{ scale: 0.95 }}
                                         >
-                                            <FaGithub className="text-sm md:text-base" />
+                                            <FaGithub />
                                             <span>GitHub</span>
                                         </motion.a>
-
                                     </div>
+
+
                                 </CardContent>
                             </Card>
                         </motion.div>

@@ -21,8 +21,45 @@ const socialIcons: Record<string, JSX.Element> = {
     Behance: <FaBehance className="text-blue-500" />,
 };
 
+// Static testimonials that all visitors can see
+const staticTestimonials: Testimonial[] = [
+    {
+        clientName: "Berenice",
+        socialHandle: "@berenice",
+        socialSite: "LinkedIn",
+        description: "Claris delivered a top-notch portfolio website that perfectly showcases my work. The design is clean, professional, and visually stunning. Highly recommended!",
+        image: "/images/expense-tracker.jpg",
+        timestamp: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString(), // 30 days ago
+    },
+    {
+        clientName: "Mr. Wabo",
+        socialHandle: "@mrwabo",
+        socialSite: "WhatsApp",
+        description: "The web development project was completed ahead of schedule with exceptional quality. Claris’s attention to detail and creativity made a huge difference in our online presence.",
+        image: "/images/weather-dashboard.jpg",
+        timestamp: new Date(Date.now() - 60 * 24 * 60 * 60 * 1000).toISOString(), // 60 days ago
+    },
+    {
+        clientName: "Julius",
+        socialHandle: "@julius_Ai",
+        socialSite: "Behance",
+        description: "Working with Claris was a pleasure! The UI/UX design enhancements she implemented made my portfolio interactive, modern, and visually engaging.",
+        image: "/images/react-django-app.jpg",
+        timestamp: new Date(Date.now() - 90 * 24 * 60 * 60 * 1000).toISOString(), // 90 days ago
+    },
+    {
+        clientName: "Doris",
+        socialHandle: "@dorisgold",
+        socialSite: "WhatsApp",
+        description: "Claris brought my ideas to life with creative solutions and responsive design. My portfolio now looks professional across all devices. Fantastic work!",
+        image: "/images/portfolio-website.jpg",
+        timestamp: new Date(Date.now() - 15 * 24 * 60 * 60 * 1000).toISOString(), // 15 days ago
+    },
+];
+
+
 export default function TestimonialsPage() {
-    const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+    const [testimonials, setTestimonials] = useState<Testimonial[]>(staticTestimonials);
     const [showModal, setShowModal] = useState(false);
     const [showExpandModal, setShowExpandModal] = useState(false);
     const [selectedTestimonial, setSelectedTestimonial] = useState<Testimonial | null>(null);
@@ -39,16 +76,29 @@ export default function TestimonialsPage() {
     const [loading, setLoading] = useState(false);
     const carouselRef = useRef<HTMLDivElement>(null);
 
-    // Load testimonials
+    // Load testimonials from localStorage and merge with static ones
     useEffect(() => {
         const stored = localStorage.getItem('portfolioTestimonials');
-        if (stored) setTestimonials(JSON.parse(stored));
+        if (stored) {
+            try {
+                const userTestimonials = JSON.parse(stored);
+                // Combine static testimonials with user-added ones
+                setTestimonials([...staticTestimonials, ...userTestimonials]);
+            } catch (err) {
+                console.error('Error parsing stored testimonials:', err);
+            }
+        }
     }, []);
 
     const saveTestimonials = (updated: Testimonial[]) => {
         try {
-            localStorage.setItem('portfolioTestimonials', JSON.stringify(updated));
-            setTestimonials(updated);
+            // Only save user-added testimonials (not static ones)
+            const userTestimonials = updated.filter(t => !staticTestimonials.some(st =>
+                st.clientName === t.clientName && st.description === t.description
+            ));
+            localStorage.setItem('portfolioTestimonials', JSON.stringify(userTestimonials));
+            // Update state with combined testimonials
+            setTestimonials([...staticTestimonials, ...userTestimonials]);
         } catch (err) {
             setMessageText('Storage limit reached! Remove some testimonials.');
             setShowMessageModal(true);
@@ -140,7 +190,7 @@ export default function TestimonialsPage() {
                 100% { transform: translateX(-50%); }
             }
             .carousel-track {
-                animation: scroll 30s linear infinite;
+                animation: scroll 10s linear infinite;
                 display: flex;
                 width: 200%;
             }
@@ -165,7 +215,7 @@ export default function TestimonialsPage() {
             <div className="absolute bottom-0 left-0 w-48 h-48 md:w-64 md:h-64 bg-gradient-to-tr from-blue-600/10 to-transparent rounded-full blur-3xl"></div>
 
             {/* Header */}
-            <div className="text-center mb-4 md:mb-8 relative z-10">
+            <div className="text-center mb-4 md:mb-8 relative z-10 pt-16 md:pt-20">
                 <motion.h1
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -204,7 +254,7 @@ export default function TestimonialsPage() {
                     {displayedTestimonials.map((t, idx) => (
                         <div
                             key={idx}
-                            className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl shadow-lg border border-gray-700 flex-shrink-0 w-[85%] md:w-[20%] p-2 md:p-3 flex flex-col cursor-pointer hover:shadow-xl transition-all duration-300 hover:border-yellow-600/30 h-60 md:h-80"
+                            className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl shadow-lg border border-gray-700 flex-shrink-0 w-[35%] md:w-[14%] p-2 md:p-3 flex flex-col cursor-pointer hover:shadow-xl transition-all duration-300 hover:border-yellow-600/30 h-60 md:h-80"
                             onClick={() => handleCardClick(t)}
                         >
                             {/* Header with rating */}

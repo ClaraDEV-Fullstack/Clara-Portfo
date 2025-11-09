@@ -115,8 +115,8 @@ export default function HeroSection() {
                         >
                             <div className="absolute inset-0 bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-full blur-md"></div>
                             <span className="relative bg-gradient-to-r from-yellow-500 to-yellow-600 text-white text-xs md:text-sm px-2 md:px-3 py-1 rounded-full font-bold shadow-lg">
-                                Full-Stack Developer
-                            </span>
+            AI Full-Stack Developer
+        </span>
                         </motion.div>
 
                         {/* Magical title */}
@@ -127,25 +127,26 @@ export default function HeroSection() {
                             className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight"
                         >
                             Hi, I'm <span className="text-yellow-400 relative inline-block">
-                                Clara Beri
-                            {/* Magical underline */}
-                            <motion.div
-                                className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full"
-                                initial={{ width: 0 }}
-                                animate={{ width: '100%' }}
-                                transition={{ duration: 1, delay: 1 }}
-                            />
-                            </span>
+            Clara Beri
+            <motion.div
+                className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full"
+                initial={{ width: 0 }}
+                animate={{ width: '100%' }}
+                transition={{ duration: 1, delay: 1 }}
+            />
+        </span>
                         </motion.h1>
 
-                        {/* Magical description */}
+                        {/* Enhanced description */}
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.7, delay: 0.5 }}
                             className="text-sm md:text-base text-gray-300 leading-relaxed"
                         >
-                            I'm a passionate full-stack developer and graphic designer <br className="hidden md:block"/>with expertise in creating modern web applications<br className="hidden md:block"/> and stunning visual designs.
+                            I’m a passionate AI-driven Full-Stack Developer and Graphic Designer.
+                            I build <span className="text-yellow-400 font-semibold">intelligent, interactive web and mobile applications</span>
+                            with modern UI/UX design, integrating AI to create smarter, faster, and more engaging digital experiences.
                         </motion.p>
 
                         {/* Magical skills */}
@@ -155,7 +156,7 @@ export default function HeroSection() {
                             transition={{ duration: 0.7, delay: 0.6 }}
                             className="flex flex-wrap gap-1.5 md:gap-2"
                         >
-                            {['Python', 'Django', 'PHP', 'Laravel', 'React', 'Next.js'].map((skill, index) => (
+                            {['AI/ML', 'Python', 'Django', 'PHP', 'Laravel', 'React', 'Next.js', 'Tailwind CSS'].map((skill, index) => (
                                 <motion.span
                                     key={skill}
                                     initial={{ opacity: 0, scale: 0.8 }}
@@ -168,7 +169,7 @@ export default function HeroSection() {
                             ))}
                         </motion.div>
 
-                        {/* Magical buttons - Now in a single row for all screens */}
+                    {/* Magical buttons - Now in a single row for all screens */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}

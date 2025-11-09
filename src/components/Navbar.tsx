@@ -4,7 +4,19 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaWhatsapp, FaEnvelope, FaCode, FaBriefcase, FaUser, FaGraduationCap, FaComments, FaEnvelope as FaContact } from 'react-icons/fa';
+import {
+    FaGithub,
+    FaLinkedin,
+    FaWhatsapp,
+    FaEnvelope,
+    FaCode,
+    FaBriefcase,
+    FaUser,
+    FaGraduationCap,
+    FaComments,
+    FaEnvelope as FaContact,
+    FaBehance
+} from 'react-icons/fa';
 
 export default function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -28,21 +40,21 @@ export default function Navbar() {
     }, []);
 
     const navItems = [
-        { href: '/', label: 'Home', icon: <FaCode className="text-sm md:text-lg" />, section: 'home' },
-        { href: '/about', label: 'About', icon: <FaUser className="text-sm md:text-lg" />, section: 'about' },
-        { href: '/skills', label: 'Skills', icon: <FaCode className="text-sm md:text-lg" />, section: 'skills' },
-        { href: '/projects', label: 'Projects', icon: <FaBriefcase className="text-sm md:text-lg" />, section: 'projects' },
-        { href: '/services', label: 'Services', icon: <FaCode className="text-sm md:text-lg" />, section: 'services' },
-        { href: '/academics', label: 'Academics', icon: <FaGraduationCap className="text-sm md:text-lg" />, section: 'academics' },
-        { href: '/testimonials', label: 'Testimonials', icon: <FaComments className="text-sm md:text-lg" />, section: 'testimonials' },
-        { href: '/contact', label: 'Contact', icon: <FaContact className="text-sm md:text-lg" />, section: 'contact' },
+        { href: '/', label: 'Home', icon: <FaCode className="text-base md:text-lg" />, section: 'home' },
+        { href: '/about', label: 'About', icon: <FaUser className="text-base md:text-lg" />, section: 'about' },
+        { href: '/skills', label: 'Skills', icon: <FaCode className="text-base md:text-lg" />, section: 'skills' },
+        { href: '/projects', label: 'Projects', icon: <FaBriefcase className="text-base md:text-lg" />, section: 'projects' },
+        { href: '/services', label: 'Services', icon: <FaCode className="text-base md:text-lg" />, section: 'services' },
+        { href: '/academics', label: 'Academics', icon: <FaGraduationCap className="text-base md:text-lg" />, section: 'academics' },
+        { href: '/testimonials', label: 'Testimonials', icon: <FaComments className="text-base md:text-lg" />, section: 'testimonials' },
+        { href: '/contact', label: 'Contact', icon: <FaContact className="text-base md:text-lg" />, section: 'contact' },
     ];
 
     const socialLinks = [
         { name: 'GitHub', url: 'https://github.com/ClaraDEV-Fullstack', icon: <FaGithub /> },
         { name: 'LinkedIn', url: 'https://www.linkedin.com/in/clara-beri-794097217/', icon: <FaLinkedin /> },
         { name: 'WhatsApp', url: 'https://wa.me/237683669723', icon: <FaWhatsapp /> },
-        { name: 'Email', url: 'mailto:claraberi63@gmail.com', icon: <FaEnvelope /> },
+        { icon: <FaBehance />, url: 'https://behance.net/claraberi' },
     ];
 
     return (
@@ -101,7 +113,7 @@ export default function Navbar() {
                         </motion.div>
 
                         {/* Desktop Navigation */}
-                        <nav className="hidden md:flex items-center gap-1">
+                        <nav className="hidden md:flex items-center gap-0.5">
                             {navItems.map((item, index) => (
                                 <motion.div
                                     key={item.href}
@@ -111,7 +123,7 @@ export default function Navbar() {
                                 >
                                     <Link
                                         href={item.href}
-                                        className={`flex items-center gap-1 px-2 sm:px-3 md:px-4 py-1.5 rounded-md text-xs sm:text-sm md:text-base font-medium transition-all duration-200 ${
+                                        className={`flex items-center gap-1 px-2 md:px-3 py-1.5 rounded-md text-sm md:text-base font-medium transition-all duration-200 ${
                                             activeSection === item.section
                                                 ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-lg'
                                                 : 'text-gray-200 hover:text-yellow-400 hover:bg-gray-800'
@@ -133,7 +145,7 @@ export default function Navbar() {
                                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                                     <Link
                                         href="/contact"
-                                        className="px-2 sm:px-3 md:px-4 py-1.5 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-semibold rounded-md shadow-md hover:shadow-lg transition-all block text-xs sm:text-sm"
+                                        className="px-2 md:px-3 py-1.5 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-semibold rounded-md shadow-md hover:shadow-lg transition-all block text-sm"
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
                                         Hire Me
@@ -184,13 +196,13 @@ export default function Navbar() {
                                 <Link
                                     href={item.href}
                                     onClick={() => setIsMobileMenuOpen(false)}
-                                    className={`flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 rounded-md text-xs sm:text-sm md:text-base font-medium transition ${
+                                    className={`flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium transition ${
                                         activeSection === item.section
                                             ? 'bg-blue-600 text-white'
                                             : 'text-gray-300 hover:bg-gray-800 hover:text-yellow-400'
                                     }`}
                                 >
-                                    {item.icon}
+                                    <span className="text-base">{item.icon}</span>
                                     <span>{item.label}</span>
                                 </Link>
                             </motion.div>
@@ -203,7 +215,7 @@ export default function Navbar() {
                         >
                             <Link
                                 href="/contact"
-                                className="px-2 sm:px-3 py-1.5 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-semibold text-xs rounded-md shadow-md text-center block transition-transform hover:scale-105"
+                                className="px-3 py-2 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-semibold text-base rounded-md shadow-md text-center block transition-transform hover:scale-105"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 Hire Me
@@ -213,7 +225,8 @@ export default function Navbar() {
                 </motion.div>
             )}
 
-
+            {/* Small padding so content doesn't hide behind header */}
+            <div className="h-12 sm:h-14 md:h-16" aria-hidden />
         </>
     );
 }

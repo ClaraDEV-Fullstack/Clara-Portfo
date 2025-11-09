@@ -65,7 +65,7 @@ const services = [
             "System architecture design",
             "Database integration and management",
             "Third-party service integration",
-            "DevOps and CI/CD implementation"
+            "DevOps and Deployment"
         ]
     },
     {
@@ -113,9 +113,19 @@ const services = [
             "Workflow automation",
             "AI API integration",
             "Data processing and analysis",
-            "Large language model utilization"
+            "openAPI utilization"
         ]
     },
+];
+
+// Define animation classes for each service
+const animationClasses = [
+    "animate__fadeInLeft",   // Slide in from left
+    "animate__fadeInRight",  // Slide in from right
+    "animate__bounceIn",     // Bounce in
+    "animate__fadeInUp",     // Fade in from bottom
+    "animate__zoomIn",       // Zoom in
+    "animate__rotateIn"      // Rotate in
 ];
 
 // Memoized Service Card Component
@@ -129,40 +139,42 @@ const ServiceCard = ({ service, index }: { service: any; index: number }) => {
     return (
         <motion.div
             ref={ref}
-            className={`flex flex-col md:flex-row items-center gap-12 md:gap-16 ${
+            className={`flex flex-col md:flex-row items-center gap-6 md:gap-8 ${
                 index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-            } group relative py-12`}
-            initial={{ opacity: 0, y: 50 }}
-            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            } group relative py-6 md:py-8 ${inView ? 'animate__animated ' + animationClasses[index] : ''}`}
+            style={{ animationDelay: inView ? `${index * 0.3}s` : '0s' }}
+            whileHover={{ scale: 1.02 }}
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.7 }}
         >
             {/* Icon Container */}
-            <div className="flex-shrink-0 bg-gradient-to-br from-blue-800/50 to-blue-900/50 p-6 rounded-2xl flex items-center justify-center shadow-xl border border-blue-700/30 hover:border-blue-500/50 transition-all duration-300 hover:scale-105 z-10">
+            <div className="flex-shrink-0 bg-gradient-to-br from-blue-800/50 to-blue-900/50 p-4 md:p-6 rounded-2xl flex items-center justify-center shadow-xl border border-blue-700/30 hover:border-blue-500/50 transition-all duration-300 hover:scale-105 z-10">
                 {service.icon}
             </div>
 
             {/* Content Container */}
-            <div className="max-w-2xl space-y-6 z-10">
+            <div className="max-w-2xl space-y-3 md:space-y-4 z-10">
                 {/* Service Title */}
-                <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 bg-clip-text text-transparent">
+                <h2 className="text-xl md:text-3xl font-bold bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 bg-clip-text text-transparent">
                     {service.title}
                 </h2>
 
                 {/* Service Description */}
-                <p className="text-gray-300 text-xl leading-relaxed">
+                <p className="text-gray-300 text-sm md:text-base leading-relaxed">
                     {service.description.trim()}
                 </p>
 
                 {/* Features List */}
-                <div className="mt-4">
-                    <h3 className="text-sm font-semibold text-blue-400 uppercase tracking-wider mb-3">
+                <div className="mt-2">
+                    <h3 className="text-xs md:text-sm font-semibold text-blue-400 uppercase tracking-wider mb-2">
                         Key Capabilities
                     </h3>
-                    <ul className="space-y-3">
+                    <ul className="space-y-1 md:space-y-2">
                         {service.features.map((feature: string, idx: number) => (
                             <li key={idx} className="flex items-start text-gray-300">
-                                <FaCheck className="text-yellow-400 mt-1 mr-3 flex-shrink-0" />
-                                <span className="text-lg">{feature}</span>
+                                <FaCheck className="text-yellow-400 mt-1 mr-2 md:mr-3 flex-shrink-0 text-xs md:text-sm" />
+                                <span className="text-sm md:text-base">{feature}</span>
                             </li>
                         ))}
                     </ul>
@@ -173,7 +185,7 @@ const ServiceCard = ({ service, index }: { service: any; index: number }) => {
             <div className={`hidden md:block absolute top-1/2 transform -translate-y-1/2 z-0 ${
                 index % 2 === 0 ? 'right-0' : 'left-0'
             }`}>
-                <div className="w-40 h-40 rounded-full bg-blue-900/20 flex items-center justify-center">
+                <div className="w-32 h-32 rounded-full bg-blue-900/20 flex items-center justify-center">
                     {service.decorativeIcon}
                 </div>
             </div>
@@ -183,20 +195,20 @@ const ServiceCard = ({ service, index }: { service: any; index: number }) => {
 
 export default function ServicesPage() {
     return (
-        <div className={`${poppins.className} bg-gray-900 min-h-screen px-6 md:px-20 py-20 relative overflow-hidden`}>
+        <div className={`${poppins.className} bg-gray-900 min-h-screen px-4 md:px-20 py-16 md:py-20 relative overflow-hidden`}>
 
             {/* Background decoration */}
             <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-600/10 to-transparent rounded-full blur-3xl pointer-events-none"></div>
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-blue-600/10 to-transparent rounded-full blur-3xl pointer-events-none"></div>
 
             {/* Services Section Title */}
-            <div className="relative mb-20 text-center">
+            <div className="relative mb-12 md:mb-16 text-center">
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <div className="w-full h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-30"></div>
                 </div>
 
                 <motion.h1
-                    className="text-5xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-white"
+                    className="text-3xl md:text-5xl font-bold mb-3 md:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 animate__animated animate__fadeInDown"
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
@@ -204,16 +216,17 @@ export default function ServicesPage() {
                     My Services
                 </motion.h1>
 
-                <div className="flex justify-center items-center space-x-4 mb-4">
-                    <div className="w-12 h-1 bg-blue-500 rounded-full"></div>
+
+                <div className="flex justify-center items-center space-x-4 mb-3 md:mb-4">
+                    <div className="w-8 md:w-12 h-1 bg-blue-500 rounded-full"></div>
                     <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                     <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                     <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                    <div className="w-12 h-1 bg-blue-500 rounded-full"></div>
+                    <div className="w-8 md:w-12 h-1 bg-blue-500 rounded-full"></div>
                 </div>
 
                 <motion.p
-                    className="text-3xl text-white max-w-3xl mx-auto"
+                    className="text-lg md:text-2xl text-white max-w-2xl md:max-w-3xl mx-auto px-4 animate__animated animate__fadeInUp"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
@@ -223,15 +236,15 @@ export default function ServicesPage() {
 
                 {/* Floating service icons */}
                 <div className="absolute -top-4 left-1/4 opacity-20 animate-bounce">
-                    <FaCode className="text-3xl text-blue-400" />
+                    <FaCode className="text-2xl md:text-3xl text-blue-400" />
                 </div>
                 <div className="absolute -bottom-4 right-1/4 opacity-20 animate-bounce" style={{ animationDelay: '0.5s' }}>
-                    <FaPalette className="text-3xl text-purple-400" />
+                    <FaPalette className="text-2xl md:text-3xl text-purple-400" />
                 </div>
             </div>
 
             {/* Services Zig-Zag Layout */}
-            <div className="flex flex-col gap-12 md:gap-16 max-w-6xl mx-auto">
+            <div className="flex flex-col gap-6 md:gap-8 max-w-6xl mx-auto">
                 {services.map((service, index) => (
                     <ServiceCard key={index} service={service} index={index} />
                 ))}

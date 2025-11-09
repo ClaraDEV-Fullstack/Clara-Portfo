@@ -4,6 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useInView } from 'react-intersection-observer';
+import 'animate.css';
 import {
     FaGithub,
     FaExternalLinkAlt,
@@ -39,36 +41,41 @@ interface Project {
 // Static projects data - showing only 3 projects
 const projects: Project[] = [
     {
+
         id: 1,
-        title: "Future Expense Tracker",
-        description: "A comprehensive expense tracking application with budget management, expense categorization, and financial insights.",
-        technologies: ["Django", "Python", "MySQL", "REST APIs", "JavaScript"],
+        title: "AI-Powered Expense Tracker",
+        description:
+            "Built with Django (backend) and Flutter (mobile frontend). Automatically categorizes expenses and predicts spending patterns using AI analytics. Dynamic charts, budget tracking, and personalized financial recommendations.",
+        technologies: ["Django", "Flutter", "AI Analytics", "Python"],
         image: "/images/expense-tracker.jpg",
-        demoUrl: "#",
-        githubUrl: "#",
+        demoUrl: "#", // Replace with deployed link later
+        githubUrl: "https://github.com/ClaraDEV-Fullstack",
         status: "In Progress",
         featured: true
     },
     {
         id: 2,
-        title: "React Django Full-Stack App",
-        description: "A modern web application combining React frontend with Django backend, featuring user authentication and real-time updates.",
-        technologies: ["React", "Django", "Python", "PostgreSQL", "Redux"],
-        image: "/images/react-django-app.jpg",
-        demoUrl: "#",
-        githubUrl: "#",
-        status: "Planning Phase",
-        featured: true
+        title: "AI Customer Recommendation Chatbot",
+        description:
+            "An intelligent chatbot built with natural language processing (NLP) and machine learning. It interacts with customers in real-time, understands preferences, and provides personalized product or service recommendations. Integrated with business APIs and capable of learning user behavior over time for improved accuracy.",
+        technologies: ["Python", "Django REST", "React", "NLP", "OpenAI API", "Dialogflow"],
+        image: "/images/ai-chatbot.jpg", // Replace with actual chatbot image later
+        demoUrl: "#", // Replace with deployed link later
+        githubUrl: "https://github.com/ClaraDEV-Fullstack",
+        status: "In Progress",
+        featured: true,
     },
     {
         id: 3,
-        title: "E-commerce Platform",
-        description: "A full-featured online shopping platform with cart, payment integration, and admin dashboard.",
-        technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Stripe", "MongoDB"],
-        image: "/images/ecommerce-platform.jpg",
-        demoUrl: "#",
-        githubUrl: "#",
-        status: "Completed"
+        title: "Smart Job Matching Platform",
+        description:
+            "A web platform connecting job seekers and recruiters with AI-driven recommendations. Matches candidates to jobs based on skills and experience. Recruiters get ranked candidate suggestions automatically.",
+        technologies: ["React", "Next.js", "Django", "AI Recommendations"],
+        image: "/images/portfolio-website.jpg",
+        demoUrl: "#", // Replace with deployed link later
+        githubUrl: "https://github.com/ClaraDEV-Fullstack",
+        status: "Planning Phase",
+        featured: true
     }
 ];
 
@@ -128,6 +135,11 @@ const CardContent = ({ children, className = '' }: { children: React.ReactNode; 
 };
 
 export default function FeaturedProjectsSection() {
+    const { ref, inView } = useInView({
+        triggerOnce: true,
+        threshold: 0.1,
+    });
+
     return (
         <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 to-black">
             <div className="max-w-7xl mx-auto">
@@ -199,44 +211,52 @@ export default function FeaturedProjectsSection() {
                                         </div>
                                     </div>
 
-                                    <div className="flex flex-col sm:flex-row justify-between mt-auto gap-1 md:gap-2">
+                                    {/* Action Buttons */}
+                                    <div className="flex flex-row justify-between mt-auto gap-2 flex-wrap">
                                         <motion.a
                                             href={project.demoUrl}
-                                            className="flex items-center gap-1 md:gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg text-xs md:text-sm font-medium justify-center"
+                                            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg text-sm font-medium justify-center flex-1 text-center"
                                             whileHover={{ scale: 1.05 }}
                                             whileTap={{ scale: 0.95 }}
                                         >
-                                            <FaExternalLinkAlt className="text-xs" />
+                                            <FaExternalLinkAlt />
                                             <span>View Demo</span>
                                         </motion.a>
+
                                         <motion.a
                                             href="https://github.com/ClaraDEV-Fullstack"
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="flex items-center gap-1 md:gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-gray-200 text-black rounded-lg text-xs md:text-sm font-medium justify-center"
+                                            className="flex items-center gap-2 px-4 py-2 bg-gray-200 text-black rounded-lg text-sm font-medium justify-center flex-1 text-center"
                                             whileHover={{ scale: 1.05, backgroundColor: "#E5E7EB" }}
                                             whileTap={{ scale: 0.95 }}
                                         >
-                                            <FaGithub className="text-sm md:text-base" />
+                                            <FaGithub />
                                             <span>GitHub</span>
                                         </motion.a>
-
                                     </div>
+
                                 </CardContent>
                             </Card>
                         </motion.div>
                     ))}
                 </div>
 
-                <motion.div className="mt-12 md:mt-16 text-center" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
-                    <h3 className="text-xl md:text-2xl font-bold text-white mb-2 md:mb-4">More Projects Coming Soon</h3>
-                    <p className="text-gray-400 max-w-2xl mx-auto mb-4 md:mb-8 text-sm md:text-base">
-                        I'm currently working on several exciting projects. Stay tuned!
-                    </p>
-                    <Link href="/projects" className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full font-medium text-sm md:text-base">
-                        View All Projects
-                    </Link>
-                </motion.div>
+                {/* Future Projects Section with animate.css animation */}
+                <div
+                    ref={ref}
+                    className={`pt-16 md:pt-24 pb-8 md:pb-12 ${inView ? 'animate__animated animate__fadeInUp' : ''}`}
+                >
+                    <div className="text-center">
+                        <h3 className="text-xl md:text-2xl font-bold text-white mb-2 md:mb-4">More Projects Coming Soon</h3>
+                        <p className="text-gray-400 max-w-2xl mx-auto mb-4 md:mb-8 text-sm md:text-base">
+                            I'm currently working on several exciting projects. Stay tuned!
+                        </p>
+                        <Link href="/projects" className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full font-medium text-sm md:text-base">
+                            View All Projects
+                        </Link>
+                    </div>
+                </div>
             </div>
         </section>
     );

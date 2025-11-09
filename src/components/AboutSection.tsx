@@ -112,30 +112,41 @@ export default function AboutSection() {
                         transition={{ duration: 0.7 }}
                         className="relative flex items-center justify-center"
                     >
-                        {/* Outer Card */}
-                        <div className="relative w-full max-w-2xl mx-auto rounded-2xl overflow-hidden shadow-2xl border-2 border-gray-700
-                    h-[60vh] sm:h-[65vh] md:h-[75vh] lg:h-[85vh] xl:h-[90vh]">
+                        {/* Outer Card - Oval Shape with Green Glow */}
+                        <div
+                            className="relative w-full max-w-2xl mx-auto overflow-hidden shadow-2xl border-2 border-gray-700
+        h-[60vh] sm:h-[65vh] md:h-[75vh] lg:h-[85vh] xl:h-[90vh]
+        flex items-center justify-center
+        rounded-[50%] bg-gradient-to-br from-blue-900/10 to-purple-900/10"
+                            style={{
+                                aspectRatio: "1/1", // Keeps the oval proportion
+                                maxHeight: "700px",
+                                boxShadow: "0 0 60px 10px rgba(144, 238, 144, 0.3)", // Soft light-green glow
+                            }}
+                        >
                             {/* Image Area */}
-                            <div className="relative w-full h-full bg-gradient-to-br from-blue-900/10 to-purple-900/10 flex items-center justify-center">
-                                {/* Professional Image */}
+                            <div className="relative w-full h-full overflow-hidden rounded-[50%] flex items-center justify-center">
                                 <Image
-                                    src="/images/profile.jpg" // ⬅️ Replace with your actual image name
+                                    src="/images/aboutpic.jpg"
                                     alt="Professional Profile Photo"
                                     fill
-                                    className="object-cover object-top opacity-95"
+                                    className="object-cover scale-110 opacity-95 transition-all duration-700 ease-in-out"
+                                    style={{
+                                        objectPosition: "center top",
+                                        clipPath: "ellipse(50% 50% at 50% 50%)", // Ensures oval shape
+                                    }}
                                     priority
                                 />
 
-                                {/* Overlay gradient to keep text readable */}
-                                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60"></div>
+                                {/* Overlay gradient for depth */}
+                                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60 rounded-[50%]"></div>
                             </div>
 
-                            {/* Decorative circles */}
+                            {/* Decorative soft glows */}
                             <div className="absolute -bottom-4 md:-bottom-6 -right-4 md:-right-6 w-16 md:w-32 h-16 md:h-32 bg-gradient-to-br from-yellow-500/20 to-yellow-800/20 rounded-full blur-xl"></div>
                             <div className="absolute -top-4 md:-top-6 -left-4 md:-left-6 w-12 md:w-16 h-12 md:h-16 bg-gradient-to-br from-yellow-500/20 to-yellow-800/20 rounded-full blur-xl"></div>
                         </div>
                     </motion.div>
-
 
                     {/* Right Column - Content */}
                     <motion.div
