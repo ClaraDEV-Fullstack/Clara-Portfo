@@ -146,7 +146,7 @@ export default function HeroSection() {
                         >
                             I’m a passionate AI-driven Full-Stack Developer and Graphic Designer.
                             I build <span className="text-yellow-400 font-semibold">intelligent, interactive web and mobile applications</span>
-                             with modern UI/UX design, integrating AI to create smarter, faster, and more engaging digital experiences.
+                             - with modern UI/UX design, integrating AI to create smarter, faster, and more engaging digital experiences.
                         </motion.p>
 
                         {/* Magical skills */}
