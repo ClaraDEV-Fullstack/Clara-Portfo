@@ -49,7 +49,7 @@ export const metadata: Metadata = {
         title: "Clara Beri | AI Full-Stack Developer & Graphic Designer",
         description:
             "A showcase of creative AI-powered web and mobile experiences designed and developed by Clara Beri.",
-        images: ["https://claradev.vercel.app/images/profile.jpg"],
+        images: ["https://claradev.vercel.app/images/layout.jpg"],
     },
     viewport: "width=device-width, initial-scale=1",
     robots: "index, follow",
