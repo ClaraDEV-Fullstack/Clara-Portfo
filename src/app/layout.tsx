@@ -4,11 +4,10 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 
-
 export const metadata: Metadata = {
-    title: "Clara Beri | AI Full-Stack Web & Mobile Developer",
+    title: "Clara Beri | AI Full-Stack Web & Mobile Developer | Graphic Designer",
     description:
-        "Hi, I'm Clara Beri — an AI-driven Full-Stack Web & Mobile Developer and Graphic Designer. I create intelligent, high-performance digital experiences that combine creativity, design, and modern technology.",
+        "Explore Clara Beri’s portfolio — showcasing creative design, AI-powered applications, and full-stack web and mobile development with modern technologies.",
     keywords: [
         "Clara Beri",
         "AI Developer",
@@ -24,9 +23,13 @@ export const metadata: Metadata = {
         "Chatbot Developer",
         "AI Integration",
         "Machine Learning",
-        "LLM Applications"
+        "LLM Applications",
     ],
     authors: [{ name: "Clara Beri" }],
+    viewport: "width=device-width, initial-scale=1",
+    robots: "index, follow",
+
+    // Open Graph for LinkedIn, Facebook, etc.
     openGraph: {
         title: "Clara Beri | AI Full-Stack Web & Mobile Developer | Graphic Designer",
         description:
@@ -44,17 +47,22 @@ export const metadata: Metadata = {
             },
         ],
     },
+
+    // Twitter Card
     twitter: {
         card: "summary_large_image",
-        title: "Clara Beri | AI Full-Stack Developer & Graphic Designer",
+        title: "Clara Beri | AI Full-Stack Web & Mobile Developer | Graphic Designer",
         description:
-            "A showcase of creative AI-powered web and mobile experiences designed and developed by Clara Beri.",
+            "Explore Clara Beri’s portfolio — creative AI-powered web and mobile experiences designed and developed by Clara Beri.",
         images: ["https://claradev.vercel.app/images/layout.jpg"],
     },
-    viewport: "width=device-width, initial-scale=1",
-    robots: "index, follow",
-};
 
+    // Optional: Favicon / Apple icons for full device support
+    icons: {
+        icon: "/favicon.ico",
+        apple: "/apple-touch-icon.png",
+    },
+};
 
 export default function RootLayout({
                                        children,
@@ -68,21 +76,11 @@ export default function RootLayout({
         <Navbar />
 
         {/* Main Content */}
-    
-        <main
-            className="
-        flex-1
-        w-full
-        transition-all
-    "
-        >
-            {/* Full-width container for portfolio content */}
+        <main className="flex-1 w-full transition-all">
             <div className="flex flex-col gap-12 sm:gap-16 md:gap-20 w-full">
                 {children}
             </div>
         </main>
-
-
 
         {/* Footer */}
         <Footer />

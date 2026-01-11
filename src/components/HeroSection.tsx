@@ -137,16 +137,16 @@ export default function HeroSection() {
         </span>
                         </motion.h1>
 
-                        {/* Enhanced description */}
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.7, delay: 0.5 }}
                             className="text-sm md:text-base text-gray-300 leading-relaxed"
                         >
-                            I’m a passionate AI-driven Full-Stack Developer and Graphic Designer.
-                            I build <span className="text-yellow-400 font-semibold">intelligent, interactive web and mobile applications</span>
-                             - with modern UI/UX design, integrating AI to create smarter, faster, and more engaging digital experiences.
+                            I am a <span className="text-yellow-400 font-bold">Full-Stack Web & Mobile Developer</span>.
+                            I specialize in building <span className="text-yellow-400 font-semibold">production-ready applications </span>
+                            with robust backends and responsive interfaces—focusing on scalable architecture,
+                            secure API design, and seamless user experiences.
                         </motion.p>
 
                         {/* Magical skills */}

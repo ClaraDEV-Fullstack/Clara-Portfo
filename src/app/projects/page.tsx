@@ -41,51 +41,39 @@ interface Project {
 const projects: Project[] = [
     {
         id: 1,
-        title: "AI-Powered Expense Tracker",
+        title: "NextShopSphere E-Commerce",
         description:
-            "Built with Django (backend) and Flutter (mobile frontend). Automatically categorizes expenses and predicts spending patterns using AI analytics. Dynamic charts, budget tracking, and personalized financial recommendations.",
-        technologies: ["Django", "Flutter", "AI Analytics", "Python"],
-        image: "/images/expense-tracker.jpg",
-        demoUrl: "#", // Replace with deployed link later
-        githubUrl: "https://github.com/ClaraDEV-Fullstack",
-        status: "In Progress",
+            "A production-ready full-stack e-commerce platform with real-world architecture. Features secure authentication, role-based access, product management, and an integrated admin dashboard. Dockerized for consistent deployment.",
+        technologies: ["Next.js", "Django", "MySQL", "Docker", "REST APIs"],
+        image: "/images/landingpage.png", // Update to your ecommerce image
+        demoUrl: "https://nextshopsphere-ui.onrender.com/",
+        githubUrl: "https://github.com/ClaraDEV-Fullstack/NextShopSphere",
+        status: "Completed",
         featured: true
     },
     {
         id: 2,
-        title: "Smart Job Matching Platform",
+        title: "SmartSpend Expense Tracker",
         description:
-            "A web platform connecting job seekers and recruiters with AI-driven recommendations. Matches candidates to jobs based on skills and experience. Recruiters get ranked candidate suggestions automatically.",
-        technologies: ["React", "Next.js", "Django", "AI Recommendations"],
-        image: "/images/portfolio-website.jpg",
-        demoUrl: "#", // Replace with deployed link later
-        githubUrl: "https://github.com/ClaraDEV-Fullstack",
-        status: "Planning Phase",
+            "Full-stack mobile application for financial management. Built with a Flutter frontend consuming Django REST APIs. Includes real-time data management and persistent storage for tracking user expenses.",
+        technologies: ["Flutter", "Django", "MySQL", "REST APIs"],
+        image: "/images/ai-chatbot.jpg", // Update to your mobile app image
+        demoUrl: "#",
+        githubUrl: "https://github.com/ClaraDEV-Fullstack", // Update to specific repo when ready
+        status: "Completed",
         featured: true
     },
     {
         id: 3,
-        title: "Personalized Learning Platform",
+        title: "NextSkill-Hub Job Platform",
         description:
-            "Recommends courses and resources based on user preferences and learning history. Features AI-driven quizzes, dynamic progress tracking, and adaptive learning paths to personalize user experiences.",
-        technologies: ["React", "Next.js", "AI Personalization", "UX/UI"],
-        image: "/images/react-django-app.jpg",
-        demoUrl: "#", // Replace with deployed link later
-        githubUrl: "https://github.com/ClaraDEV-Fullstack",
-        status: "Planning Phase",
-        featured: false
-    },
-    {
-        id: 4,
-        title: "AI Customer Recommendation Chatbot",
-        description:
-            "An intelligent chatbot built with natural language processing (NLP) and machine learning. It interacts with customers in real-time, understands preferences, and provides personalized product or service recommendations. Integrated with business APIs and capable of learning user behavior over time for improved accuracy.",
-        technologies: ["Python", "Django REST", "React", "NLP", "OpenAI API", "Dialogflow"],
-        image: "/images/ai-chatbot.jpg", // Replace with actual chatbot image later
-        demoUrl: "#", // Replace with deployed link later
-        githubUrl: "https://github.com/ClaraDEV-Fullstack",
+            "A collaborative internship project connecting companies, freelancers, and job seekers. Focused on implementing scalable UI components and seamless API integrations within a real-world development workflow.",
+        technologies: ["Next.js", "Django", "PostgreSQL", "Tailwind CSS"],
+        image: "/images/NextSkill.png", // Update to project image
+        demoUrl: "#",
+        githubUrl: "https://github.com/HighTechLabs/nextskillhub",
         status: "In Progress",
-        featured: true,
+        featured: true
     }
 ];
 
@@ -181,7 +169,7 @@ export default function ProjectsPage() {
                         {/* Section Description - Enhanced for mobile */}
                         <div className="mt-4 md:mt-5 text-sm md:text-base lg:text-xl text-blue-100/90 max-w-full px-4 md:px-8 lg:px-16 mx-auto leading-relaxed">
                             <div className="max-w-md md:max-w-xl lg:max-w-3xl mx-auto">
-                                <span className="font-semibold text-cyan-300">AI-driven</span> full-stack applications
+                                <span className="font-semibold text-yellow-400">AI-driven</span> full-stack applications
                                 <span className="block md:inline mt-1 md:mt-0"> blending innovation with robust development</span>
                             </div>
                         </div>
@@ -190,7 +178,7 @@ export default function ProjectsPage() {
                         <div className="mt-2 md:mt-4 text-sm md:text-base lg:text-xl text-blue-100/90 max-w-full px-4 md:px-8 lg:px-16 mx-auto leading-relaxed">
                             <div className="max-w-lg md:max-w-md lg:max-w-5xl mx-auto">
                                 <span className="block md:inline">Each project showcases </span>
-                                <span className="font-semibold text-cyan-300">real-world solutions</span>
+                                <span className="font-semibold text-yellow-400">real-world solutions</span>
                                 <span className="block md:inline mt-1 md:mt-0"> with intelligent design and scalable architecture</span>
                             </div>
                         </div>

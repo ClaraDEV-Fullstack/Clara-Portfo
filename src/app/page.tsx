@@ -22,14 +22,14 @@ export default function Home() {
                 {/* My Skills Section */}
                 <MySkillsSection />
 
+                {/* Featured Projects Section */}
+                <FeaturedProjectsSection />
+
                 {/* About Section */}
                 <AboutSection />
 
                 {/* My Services Section */}
                 <MyServicesSection />
-
-                {/* Featured Projects Section */}
-                <FeaturedProjectsSection />
 
                 {/* Client Testimonials Section */}
                 <ClientTestimonialsSection />

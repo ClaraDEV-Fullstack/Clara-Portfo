@@ -5,279 +5,188 @@ import Image from 'next/image';
 import {
     FaGraduationCap,
     FaBriefcase,
-    FaCode,
-    FaPalette,
     FaLaptopCode,
-    FaUserTie,
-    FaBook,
     FaRocket,
     FaBrain,
-    FaAward,
-    FaCertificate,
-    FaCrown
+    FaCrown,
+    FaBook
 } from 'react-icons/fa';
 
 export default function AboutSection() {
     const education = [
         {
             year: '2022-2023',
-            title: 'MBA in Logistics and Supply Chain',
+            title: 'MBA in Logistics & Supply Chain',
             institution: 'IUGET, Bonamoussadi',
-            description:
-                'Focused on strategic management, logistics optimization, and efficient supply chain systems.'
+            description: 'Advanced strategic management and systems optimization.'
         },
         {
-            year: '2021',
-            title: "Bachelor's Degree",
-            institution: 'Management Sciences',
-            description:
-                'Built strong analytical and leadership foundations with emphasis on organizational management.'
-        },
-        {
-            year: '2019-2020',
-            title: 'HND in Human Resource Management',
+            year: '2019-2021',
+            title: "Bachelor's in Management Sciences",
             institution: 'IUC – Institute Universitaire de la Côte',
-            description:
-                'Developed expertise in employee relations, recruitment, and workplace management strategies.'
-        },
-        {
-            year: '2018',
-            title: 'GCE Advanced Level',
-            institution: 'Business Studies',
-            description:
-                'Completed advanced secondary education with a strong foundation in management and business principles.'
+            description: 'Focus on organizational leadership and analytical foundations.'
         }
     ];
 
     const experience = [
         {
-            year: '2023-Present',
-            title: 'Full-Stack Web & Mobile Development',
-            institution: 'HiTech Training Center',
-            description:
-                'Building scalable web and mobile applications with modern technologies and frameworks.',
-            type: 'training'
+            year: '2025-Present',
+            title: 'Full-Stack Developer Intern',
+            company: 'HighTechLabs',
+            description: 'Developing talent marketplaces (NextSkill-Hub) using Next.js, Django, and PostgreSQL in a professional team environment.',
+            type: 'internship'
         },
         {
-            year: '2021-2023',
-            title: 'Graphic Designer & Assistant Manager',
-            company: 'Awabong Private Company',
-            description:
-                'Oversaw design, production, procurement, and delivery while managing supply chain operations.',
-            type: 'experience'
+            year: '2024-Present',
+            title: 'Software Development Training',
+            institution: 'HiTech Training Center',
+            description: 'Mastering React, Django, Flutter, and Dockerized deployments for production-ready apps.',
+            type: 'training'
         }
     ];
 
     const milestones = [
         {
-            title: 'Discovering My Passion',
-            text: "During my Master's in Logistics & Supply Chain Management, I realized my deep interest in creativity and digital design. I enrolled in a graphic design training while attending classes in the evenings, mastering discipline and focus.",
+            title: 'Strategic Foundation',
+            text: "My Master's in Logistics & Supply Chain taught me how to optimize complex systems—a skill I now apply to writing efficient, scalable code and managing data flow.",
             icon: <FaBook className="text-yellow-400" />
         },
         {
-            title: 'Stepping into the Professional World',
-            text: 'My first opportunity was with a startup as a secretary, quickly growing into a multi-role contributor: graphic designer, printing manager, and production coordinator. I handled T-shirt printing, banners, mock-ups, and more, earning recognition and trust.',
+            title: 'The Professional Shift',
+            text: 'Starting in administrative and design roles, I realized that technology was the key to solving the business bottlenecks I encountered. I decided to master the tools to build those solutions myself.',
             icon: <FaBriefcase className="text-yellow-400" />
         },
         {
-            title: 'Growing Beyond Limits',
-            text: 'Excelling in my first job motivated me to expand my skill set. I explored full-stack and mobile development to combine creativity with technology, aiming to deliver higher-value solutions.',
-            icon: <FaRocket className="text-yellow-400" />
-        },
-        {
-            title: 'The Full-Stack Journey',
-            text: 'I enrolled in an intensive full-stack and mobile development course for a year. Challenges included long coding hours, debugging, and building real-world apps. Consistent practice helped me master React, Next.js, Python, Django, PHP, and deliver production-ready solutions.',
+            title: 'Intensive Technical Growth',
+            text: 'I committed to a rigorous year of full-stack and mobile development training, mastering the MERN and Django stacks, and learning to deploy applications using Docker.',
             icon: <FaLaptopCode className="text-yellow-400" />
         },
         {
-            title: 'Today & AI Enthusiast',
-            text: 'Today, I integrate AI into my workflow as an AI developer. I combine creativity, full-stack development, and AI solutions—building applications, chatbots, and API integrations—showing that I am future-ready and continuously evolving.',
-            icon: <FaBrain className="text-yellow-400" />
+            title: 'Real-World Impact',
+            text: 'As an intern at HighTechLabs, I now collaborate on production-level code, focusing on building intuitive user interfaces and robust API integrations for modern platforms.',
+            icon: <FaRocket className="text-yellow-400" />
         }
     ];
 
     return (
-        <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-800 to-gray-950 relative overflow-hidden">
-            {/* Background decoration */}
-            <div className="absolute top-0 right-0 w-64 md:w-96 h-64 md:h-96 bg-gradient-to-br from-blue-600/20 to-transparent rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-64 md:w-96 h-64 md:h-96 bg-gradient-to-tr from-purple-600/20 to-transparent rounded-full blur-3xl"></div>
+        <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
+            {/* Background Glows */}
+            <div className="absolute top-0 right-0 w-64 md:w-96 h-64 md:h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-64 md:w-96 h-64 md:h-96 bg-purple-600/10 rounded-full blur-3xl"></div>
 
             <div className="max-w-7xl mx-auto relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center">
-                    {/* Left Column - Image */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.7 }}
-                        className="relative flex items-center justify-center"
-                    >
-                        {/* Outer Card - Oval Shape with Green Glow */}
-                        <div
-                            className="relative w-full max-w-2xl mx-auto overflow-hidden shadow-2xl border-2 border-gray-700
-        h-[60vh] sm:h-[65vh] md:h-[75vh] lg:h-[85vh] xl:h-[90vh]
-        flex items-center justify-center
-        rounded-[50%] bg-gradient-to-br from-blue-900/10 to-purple-900/10"
-                            style={{
-                                aspectRatio: "1/1", // Keeps the oval proportion
-                                maxHeight: "700px",
-                                boxShadow: "0 0 60px 10px rgba(144, 238, 144, 0.3)", // Soft light-green glow
-                            }}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-start">
+
+                    {/* Left Column: Image & Milestones */}
+                    <div className="space-y-15">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.7 }}
+                            className="relative flex items-center justify-center"
                         >
-                            {/* Image Area */}
-                            <div className="relative w-full h-full overflow-hidden rounded-[50%] flex items-center justify-center">
+                            <div className="relative w-full max-w-sm aspect-[4/5] rounded-[60px] md:rounded-[100px] overflow-hidden border-2 border-gray-700 shadow-2xl">
                                 <Image
                                     src="/images/aboutpic.jpg"
-                                    alt="Professional Profile Photo"
+                                    alt="Clara - Full Stack Developer"
                                     fill
-                                    className="object-cover scale-110 opacity-95 transition-all duration-700 ease-in-out"
-                                    style={{
-                                        objectPosition: "center top",
-                                        clipPath: "ellipse(50% 50% at 50% 50%)", // Ensures oval shape
-                                    }}
+                                    className="object-cover"
                                     priority
                                 />
-
-                                {/* Overlay gradient for depth */}
-                                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60 rounded-[50%]"></div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                             </div>
+                        </motion.div>
 
-                            {/* Decorative soft glows */}
-                            <div className="absolute -bottom-4 md:-bottom-6 -right-4 md:-right-6 w-16 md:w-32 h-16 md:h-32 bg-gradient-to-br from-yellow-500/20 to-yellow-800/20 rounded-full blur-xl"></div>
-                            <div className="absolute -top-4 md:-top-6 -left-4 md:-left-6 w-12 md:w-16 h-12 md:h-16 bg-gradient-to-br from-yellow-500/20 to-yellow-800/20 rounded-full blur-xl"></div>
+                        {/* Journey Milestones Section */}
+                        <div className="space-y-6">
+                            <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                                <FaRocket className="text-blue-500" /> My Journey
+                            </h3>
+                            <div className="grid grid-cols-1 gap-4">
+                                {milestones.map((ms, idx) => (
+                                    <motion.div
+                                        key={idx}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: idx * 0.1 }}
+                                        className="p-4 rounded-xl bg-gray-800/30 border border-gray-700/50"
+                                    >
+                                        <div className="flex gap-4">
+                                            <div className="mt-1">{ms.icon}</div>
+                                            <div>
+                                                <h4 className="text-white font-semibold text-sm">{ms.title}</h4>
+                                                <p className="text-gray-400 text-xs mt-1 leading-relaxed">{ms.text}</p>
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </div>
                         </div>
-                    </motion.div>
+                    </div>
 
-                    {/* Right Column - Content */}
+                    {/* Right Column: Profile, Experience, Education */}
                     <motion.div
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.7, delay: 0.2 }}
-                        className="space-y-4 md:space-y-6"
+                        transition={{ duration: 0.7 }}
+                        className="space-y-8 lg:sticky lg:top-8"
                     >
-                        {/* My Journey */}
-                        <div className="mt-2 md:mt-4">
-                            <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
-                                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-r from-yellow-500 to-yellow-700 flex items-center justify-center shadow-lg">
-                                    <FaCrown className="text-white text-sm md:text-base" />
-                                </div>
-                                <h3 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent">
-                                    My Journey
-                                </h3>
+                        <div>
+                            <div className="flex items-center gap-3 mb-4">
+                                <FaCrown className="text-yellow-500 text-2xl" />
+                                <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
+                                    Professional Profile
+                                </h2>
                             </div>
-
-                            <div className="space-y-2 md:space-y-3">
-                                {milestones.slice(0, 3).map((milestone, index) => (
-                                    <motion.div
-                                        key={index}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.5, delay: 0.1 * index }}
-                                        className="flex gap-3 md:gap-4 p-2 md:p-3 rounded-xl bg-gradient-to-r from-gray-800/30 to-gray-900/30 border border-gray-700/50 hover:border-yellow-500/30 transition-all duration-300 hover:shadow-lg"
-                                    >
-                                        <div className="mt-1 flex-shrink-0 text-sm md:text-base">{milestone.icon}</div>
-                                        <div>
-                                            <h4 className="font-medium text-white text-base md:text-lg">
-                                                {milestone.title}
-                                            </h4>
-                                            <p className="text-xs md:text-sm text-gray-400">
-                                                {milestone.text.substring(0, 60)}...
-                                            </p>
-                                        </div>
-                                    </motion.div>
-                                ))}
-                            </div>
+                            <p className="text-gray-300 text-base leading-relaxed">
+                                I bridge the gap between <span className="text-blue-400 font-bold">Business Strategy</span> and <span className="text-yellow-400 font-bold">Technical Execution</span>. With an MBA background and Full-Stack expertise, I build software that doesn't just work—it solves problems.
+                            </p>
                         </div>
 
-                        {/* Education */}
-                        <div className="mt-2 md:mt-4">
-                            <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">
-                                <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-gradient-to-r from-blue-500 to-blue-700 flex items-center justify-center shadow-lg">
-                                    <FaGraduationCap className="text-white text-xs md:text-sm" />
-                                </div>
-                                <h3 className="text-lg md:text-xl font-semibold text-white">Education</h3>
-                            </div>
-                            <div className="flex flex-wrap gap-2">
-                                {education.slice(0, 2).map((item, index) => (
-                                    <motion.div
-                                        key={index}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.5, delay: 0.1 * index }}
-                                        className="bg-gray-800/50 backdrop-blur-sm px-3 py-2 rounded-xl border border-gray-700 flex items-center gap-2"
-                                    >
-                                        <div>
-                                            <h4 className="font-medium text-white text-sm">
-                                                {item.title}
-                                            </h4>
-                                            <p className="text-xs text-gray-400">
-                                                {item.institution}
-                                            </p>
-                                        </div>
-                                        <span className="text-xs bg-blue-500/20 text-blue-300 px-2 py-1 rounded-full whitespace-nowrap">
+                        {/* Experience Highlights */}
+                        <div className="space-y-4">
+                            <h3 className="text-lg font-semibold text-white border-l-4 border-blue-500 pl-3">Professional Experience</h3>
+                            {experience.map((item, index) => (
+                                <div key={index} className="p-5 rounded-2xl bg-gradient-to-br from-gray-800/60 to-gray-900/60 border border-gray-700">
+                                    <div className="flex justify-between items-start mb-2">
+                                        <h4 className="font-bold text-white text-lg">{item.title}</h4>
+                                        <span className="text-[10px] bg-blue-500 text-white px-2 py-1 rounded-md font-bold uppercase tracking-tighter">
                                             {item.year}
                                         </span>
-                                    </motion.div>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Experience */}
-                        <div className="mt-2 md:mt-4">
-                            <div className="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">
-                                <div className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-gradient-to-r from-purple-500 to-purple-700 flex items-center justify-center shadow-lg">
-                                    <FaBriefcase className="text-white text-xs md:text-sm" />
+                                    </div>
+                                    <p className="text-sm text-yellow-500 font-medium mb-2">{item.company || item.institution}</p>
+                                    <p className="text-sm text-gray-400 leading-relaxed">{item.description}</p>
                                 </div>
-                                <h3 className="text-lg md:text-xl font-semibold text-white">Experience</h3>
-                            </div>
-                            <div className="space-y-2 md:space-y-3">
-                                {experience.map((item, index) => (
-                                    <motion.div
-                                        key={index}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.5, delay: 0.1 * index }}
-                                        className="bg-gradient-to-r from-gray-800/50 to-gray-900/50 p-3 md:p-4 rounded-xl border border-gray-700 hover:border-yellow-500/30 transition-all duration-300 hover:shadow-lg"
-                                    >
-                                        <div className="flex justify-between items-start mb-1 md:mb-2">
-                                            <h4 className="font-medium text-white text-base md:text-lg">
-                                                {item.title}
-                                            </h4>
-                                            <span className="text-xs bg-gradient-to-r from-yellow-500 to-yellow-700 text-white px-2 py-1 rounded-full shadow-sm">
-                                                {item.year}
-                                            </span>
+                            ))}
+                        </div>
+
+                        {/* Education Chips */}
+                        <div className="space-y-4">
+                            <h3 className="text-lg font-semibold text-white border-l-4 border-purple-500 pl-3">Academic Background</h3>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                {education.map((edu, i) => (
+                                    <div key={i} className="flex items-center gap-3 bg-gray-800/40 p-3 rounded-xl border border-gray-700">
+                                        <FaGraduationCap className="text-purple-400 text-xl" />
+                                        <div>
+                                            <p className="text-xs text-white font-bold">{edu.title}</p>
+                                            <p className="text-[10px] text-gray-400">{edu.institution}</p>
                                         </div>
-                                        <p className="text-xs md:text-sm text-gray-400 mb-1">
-                                            {item.type === 'training'
-                                                ? item.institution
-                                                : item.company}
-                                        </p>
-                                        <p className="text-gray-300 text-xs md:text-sm">
-                                            {item.description.substring(0, 80)}...
-                                        </p>
-                                    </motion.div>
+                                    </div>
                                 ))}
                             </div>
                         </div>
 
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: 0.5 }}
-                            className="pt-2 md:pt-4"
-                        >
+                        <div className="pt-6">
                             <a
-                                href="/about"
-                                className="inline-flex items-center px-4 md:px-6 py-2 md:py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-lg hover:from-blue-500 hover:to-indigo-500 transition-all shadow-lg hover:shadow-blue-500/20 text-sm md:text-base"
+                                href="/projects"
+                                className="group inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-full transition-all hover:scale-105 shadow-xl"
                             >
-                                Learn More About Me
+                                VIEW PORTFOLIO
+                                <FaRocket className="group-hover:translate-x-1 transition-transform" />
                             </a>
-                        </motion.div>
+                        </div>
                     </motion.div>
                 </div>
             </div>
