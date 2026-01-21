@@ -190,7 +190,7 @@ export default function ContactPage() {
                         <div className="flex flex-wrap gap-4">
                             {[
                                 { icon: <FaGithub />, name: 'GitHub', url: 'https://github.com/ClaraDEV-Fullstack', color: 'hover:text-gray-300' },
-                                { icon: <FaLinkedin />, name: 'LinkedIn', url: 'https://linkedin.com/in/clara-beri-794097217/', color: 'hover:text-blue-400' },
+                                { icon: <FaLinkedin />, name: 'LinkedIn', url: 'https://www.linkedin.com/in/clarisse-berinyuy-794097217/', color: 'hover:text-blue-400' },
                                 { icon: <FaWhatsapp />, name: 'WhatsApp', url: 'https://wa.me/237683669723', color: 'hover:text-green-400' },
                                 { icon: <FaBehance />, name: 'Behance', url: 'https://behance.net/claraberi', color: 'hover:text-blue-500' }
                             ].map((social, index) => (

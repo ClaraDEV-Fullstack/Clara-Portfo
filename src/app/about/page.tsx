@@ -124,7 +124,7 @@ export default function AboutPage() {
                                     <div className="hidden md:block">
                                         <div className="mb-3">
                                             <span className="inline-block bg-blue-500 text-white text-base px-3 py-1.5 rounded-full font-semibold">
-                                                1+ year experience
+                                                2 year experience
                                             </span>
                                         </div>
                                         <h2 className="text-2xl md:text-4xl lg:text-5xl font-black mb-4 tracking-tight leading-snug">
@@ -133,7 +133,7 @@ export default function AboutPage() {
                                         </h2>
                                         <div className="space-y-3">
                                             <p className="text-base md:text-xl lg:text-2xl font-medium leading-relaxed">
-                                                I am an <span className="text-blue-400 font-semibold">AI Full-Stack Web & Mobile Developer</span> building
+                                                I am a <span className="text-blue-400 font-semibold"> Full-Stack Web & Mobile Developer</span> building
                                             </p>
                                             <div className="flex flex-wrap gap-2">
                                                 <span className="text-base md:text-xl lg:text-2xl font-medium text-blue-400">React</span>
@@ -152,7 +152,7 @@ export default function AboutPage() {
                                     <div className="md:hidden">
                                         <div className="mb-1">
                                             <span className="inline-block bg-blue-500 text-white text-[8px] px-1.5 py-0.5 rounded-full font-semibold">
-                                                1+ year experience
+                                                2 year experience
                                             </span>
                                         </div>
                                         <h2 className="text-xs font-black mb-1 tracking-tight leading-snug">
@@ -206,7 +206,7 @@ export default function AboutPage() {
                                     <div className="hidden md:block">
                                         <div className="mb-3">
                                             <span className="inline-block bg-blue-500 text-white text-base px-3 py-1.5 rounded-full font-semibold">
-                                                2+ years experience
+                                                3+ years experience
                                             </span>
                                         </div>
                                         <h2 className="text-2xl md:text-4xl lg:text-5xl font-black mb-4 tracking-tight leading-snug">
@@ -229,7 +229,7 @@ export default function AboutPage() {
                                     <div className="md:hidden">
                                         <div className="mb-1">
                                             <span className="inline-block bg-blue-500 text-white text-[8px] px-1.5 py-0.5 rounded-full font-semibold">
-                                                2+ years experience
+                                                3+ years experience
                                             </span>
                                         </div>
                                         <h2 className="text-xs font-black mb-1 tracking-tight leading-snug">
