@@ -86,7 +86,7 @@ export default function AboutSection() {
                             transition={{ duration: 0.7 }}
                             className="relative flex items-center justify-center"
                         >
-                            <div className="relative w-full max-w-sm aspect-[4/5] rounded-[60px] md:rounded-[100px] overflow-hidden border-2 border-gray-700 shadow-2xl">
+                            <div className="relative w-[300px] h-[400px] md:w-[380px] md:h-[500px] rounded-[60px] md:rounded-[100px] overflow-hidden border-2 border-gray-700 shadow-2xl">
                                 <Image
                                     src="/images/aboutpic.jpg"
                                     alt="Clara - Full Stack Developer"
@@ -97,34 +97,7 @@ export default function AboutSection() {
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                             </div>
                         </motion.div>
-
-                        {/* Journey Milestones Section */}
-                        <div className="space-y-6">
-                            <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                                <FaRocket className="text-blue-500" /> My Journey
-                            </h3>
-                            <div className="grid grid-cols-1 gap-4">
-                                {milestones.map((ms, idx) => (
-                                    <motion.div
-                                        key={idx}
-                                        initial={{ opacity: 0, x: -20 }}
-                                        whileInView={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: idx * 0.1 }}
-                                        className="p-4 rounded-xl bg-gray-800/30 border border-gray-700/50"
-                                    >
-                                        <div className="flex gap-4">
-                                            <div className="mt-1">{ms.icon}</div>
-                                            <div>
-                                                <h4 className="text-white font-semibold text-sm">{ms.title}</h4>
-                                                <p className="text-gray-400 text-xs mt-1 leading-relaxed">{ms.text}</p>
-                                            </div>
-                                        </div>
-                                    </motion.div>
-                                ))}
-                            </div>
-                        </div>
                     </div>
-
                     {/* Right Column: Profile, Experience, Education */}
                     <motion.div
                         initial={{ opacity: 0, x: 50 }}
@@ -176,16 +149,6 @@ export default function AboutSection() {
                                     </div>
                                 ))}
                             </div>
-                        </div>
-
-                        <div className="pt-6">
-                            <a
-                                href="/projects"
-                                className="group inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-full transition-all hover:scale-105 shadow-xl"
-                            >
-                                VIEW PORTFOLIO
-                                <FaRocket className="group-hover:translate-x-1 transition-transform" />
-                            </a>
                         </div>
                     </motion.div>
                 </div>

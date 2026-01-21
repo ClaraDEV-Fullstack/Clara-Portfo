@@ -3,9 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import SectionTitle from "../../components/SectionTitle";
 import { Card, CardContent } from "../../components/ui/card";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import 'animate.css';
 
 // Dynamic imports for icons to reduce bundle size
@@ -21,6 +20,25 @@ const SiTypescript = dynamic(() => import("react-icons/si").then(mod => mod.SiTy
 const SiMysql = dynamic(() => import("react-icons/si").then(mod => mod.SiMysql));
 const SiFirebase = dynamic(() => import("react-icons/si").then(mod => mod.SiFirebase));
 const SiDjango = dynamic(() => import("react-icons/si").then(mod => mod.SiDjango));
+
+// --- Toast Component (Simple & Lightweight) ---
+const Toast = ({ message, show }: { message: string, show: boolean }) => {
+    return (
+        <AnimatePresence>
+            {show && (
+                <motion.div
+                    initial={{ opacity: 0, y: 50, x: '-50%' }}
+                    animate={{ opacity: 1, y: 0, x: '-50%' }}
+                    exit={{ opacity: 0, y: 50, x: '-50%' }}
+                    className="fixed bottom-10 left-1/2 z-50 bg-gray-900 text-white px-6 py-3 rounded-full shadow-2xl border border-yellow-500/50 flex items-center gap-3 w-max max-w-[90vw]"
+                >
+                    <span className="text-xl">🚧</span>
+                    <span className="text-sm font-medium">{message}</span>
+                </motion.div>
+            )}
+        </AnimatePresence>
+    );
+};
 
 // Types
 type ProjectStatus = "Completed" | "In Progress" | "Planning Phase";
@@ -45,7 +63,7 @@ const projects: Project[] = [
         description:
             "A production-ready full-stack e-commerce platform with real-world architecture. Features secure authentication, role-based access, product management, and an integrated admin dashboard. Dockerized for consistent deployment.",
         technologies: ["Next.js", "Django", "MySQL", "Docker", "REST APIs"],
-        image: "/images/landingpage.png", // Update to your ecommerce image
+        image: "/images/landingpage.png",
         demoUrl: "https://nextshopsphere-ui.onrender.com/",
         githubUrl: "https://github.com/ClaraDEV-Fullstack/NextShopSphere",
         status: "Completed",
@@ -53,13 +71,13 @@ const projects: Project[] = [
     },
     {
         id: 2,
-        title: "SmartSpend Expense Tracker",
+        title: "SmartSpend Tracker",
         description:
             "Full-stack mobile application for financial management. Built with a Flutter frontend consuming Django REST APIs. Includes real-time data management and persistent storage for tracking user expenses.",
         technologies: ["Flutter", "Django", "MySQL", "REST APIs"],
-        image: "/images/ai-chatbot.jpg", // Update to your mobile app image
-        demoUrl: "#",
-        githubUrl: "https://github.com/ClaraDEV-Fullstack", // Update to specific repo when ready
+        image: "/images/dashboard.png",
+        demoUrl: "",
+        githubUrl: "https://github.com/ClaraDEV-Fullstack/SmartSpend-App",
         status: "Completed",
         featured: true
     },
@@ -69,8 +87,8 @@ const projects: Project[] = [
         description:
             "A collaborative internship project connecting companies, freelancers, and job seekers. Focused on implementing scalable UI components and seamless API integrations within a real-world development workflow.",
         technologies: ["Next.js", "Django", "PostgreSQL", "Tailwind CSS"],
-        image: "/images/NextSkill.png", // Update to project image
-        demoUrl: "#",
+        image: "/images/NextSkill.png",
+        demoUrl: "",
         githubUrl: "https://github.com/HighTechLabs/nextskillhub",
         status: "In Progress",
         featured: true
@@ -99,7 +117,8 @@ const getTechIcon = (tech: string) => {
         "Stripe": <FaCode className="text-purple-500" />,
         "Redux": <FaCode className="text-purple-400" />,
         "Firebase": <SiFirebase className="text-yellow-500" />,
-        "REST APIs": <FaCode className="text-blue-400" />
+        "REST APIs": <FaCode className="text-blue-400" />,
+        "Flutter": <FaCode className="text-blue-400" />
     };
 
     return iconMap[tech] || <FaCode className="text-gray-400" />;
@@ -115,6 +134,8 @@ const statusColors: Record<ProjectStatus, string> = {
 // Projects Page component
 export default function ProjectsPage() {
     const [filter, setFilter] = useState<"all" | "featured" | ProjectStatus>("all");
+    const [toastMessage, setToastMessage] = useState("");
+    const [showToast, setShowToast] = useState(false);
 
     const filteredProjects = filter === "all"
         ? projects
@@ -125,7 +146,6 @@ export default function ProjectsPage() {
         const animations = [
             'animate__fadeInLeft',
             'animate__fadeInRight',
-
             'animate__fadeInDown',
             'animate__zoomIn',
             'animate__bounceIn',
@@ -139,8 +159,22 @@ export default function ProjectsPage() {
         return animations[index % animations.length];
     };
 
+    const handleDemoClick = (url: string) => {
+        if (url && url !== "#") {
+            window.open(url, "_blank");
+        } else {
+            setToastMessage("Demo is currently being deployed. Check back soon!");
+            setShowToast(true);
+            setTimeout(() => setShowToast(false), 3000);
+        }
+    };
+
     return (
-        <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white py-12 md:py-20 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-white py-12 md:py-20 px-4 sm:px-6 lg:px-8 relative">
+
+            {/* Custom Toast Notification */}
+            <Toast message={toastMessage} show={showToast} />
+
             <div className="max-w-7xl mx-auto">
                 {/* Section Title */}
                 <motion.div
@@ -277,18 +311,22 @@ export default function ProjectsPage() {
 
                                     {/* Action Buttons */}
                                     <div className="flex flex-row justify-between mt-auto gap-2 flex-wrap">
-                                        <motion.a
-                                            href={project.demoUrl}
-                                            className="flex items-center gap-1 md:gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg text-xs md:text-sm font-medium justify-center flex-1 text-center"
-                                            whileHover={{ scale: 1.05 }}
-                                            whileTap={{ scale: 0.95 }}
+                                        {/* View Demo Button - Modified */}
+                                        <button
+                                            onClick={() => handleDemoClick(project.demoUrl)}
+                                            className={`flex items-center gap-1 md:gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-medium justify-center flex-1 text-center transition-all duration-300
+                                                ${(project.demoUrl && project.demoUrl !== "#")
+                                                ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-lg hover:scale-105 active:scale-95"
+                                                : "bg-gray-200 text-gray-500 cursor-pointer hover:bg-gray-300 border border-gray-300 active:scale-95"
+                                            }`}
                                         >
                                             <FaExternalLinkAlt className="text-xs" />
-                                            <span>View Demo</span>
-                                        </motion.a>
+                                            <span>{(project.demoUrl && project.demoUrl !== "#") ? "View Demo" : "Deployment"}</span>
+                                        </button>
 
+                                        {/* GitHub Button */}
                                         <motion.a
-                                            href="https://github.com/ClaraDEV-Fullstack"
+                                            href={project.githubUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="flex items-center gap-1 md:gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-gray-200 text-black rounded-lg text-xs md:text-sm font-medium justify-center flex-1 text-center"
